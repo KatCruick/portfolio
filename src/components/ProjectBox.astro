@@ -1,0 +1,36 @@
+---
+import SubheadingOne from "../components/typography/SubheadingOne.astro";
+import HeadingTwo from "../components/typography/HeadingTwo.astro";
+import Body from "../components/typography/Body.astro";
+import Tag, { type TagColour } from "./typography/Tag.astro";
+
+export type Props = {
+  title: string;
+  tagColour: TagColour;
+  description: string;
+  projectNumber: number;
+  href: string;
+};
+
+const { title, tagColour, description, projectNumber, href } = Astro.props;
+---
+
+<a class="flex w-full gap-x-[68px] border-2 px-[68px] py-4" href={href}>
+  <div class="flex grow items-center">
+    <HeadingTwo>
+      <span class="align-middle"> {projectNumber}. </span>
+    </HeadingTwo>
+  </div>
+
+  <div class="flex flex-col">
+    <SubheadingOne>{title}</SubheadingOne>
+    <div class="flex gap-x-8 pt-2">
+      <Tag colour={tagColour}>Tag</Tag>
+      <Tag colour={tagColour}>Tag</Tag>
+      <Tag colour={tagColour}>Tag</Tag>
+    </div>
+    <div class="pt-6">
+      <Body>{description}</Body>
+    </div>
+  </div>
+</a>

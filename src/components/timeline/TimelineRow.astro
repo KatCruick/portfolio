@@ -1,0 +1,51 @@
+---
+import HeadingThree from "../typography/HeadingThree.astro";
+import TimelineBox from "./TimelineBox.astro";
+import { type TimelineElement } from "../../content/index.ts";
+import clsx from "clsx";
+
+const COLOURS = {
+  red: "bg-red",
+  blue: "bg-blue",
+  green: "bg-green",
+  yellow: "bg-yellow"
+} as const;
+
+type Props = {
+  direction?: "left" | "right";
+  colour?: keyof typeof COLOURS;
+} & TimelineElement;
+
+const {
+  direction = "left",
+  colour = "red",
+  date,
+  ...timelineBoxProps
+} = Astro.props;
+
+const colourClass = COLOURS[colour];
+---
+
+<div class="flex">
+  <div class="flex w-full basis-1/2 items-center justify-end">
+    {
+      direction === "left" ? (
+        <TimelineBox {...timelineBoxProps} />
+      ) : (
+        <HeadingThree> {date} </HeadingThree>
+      )
+    }
+  </div>
+  <div class="flex items-center px-2">
+    <div class={clsx(colourClass, "h-10 w-10 rounded-full")}></div>
+  </div>
+  <div class="flex w-full basis-1/2 items-center">
+    {
+      direction === "left" ? (
+        <HeadingThree> {date} </HeadingThree>
+      ) : (
+        <TimelineBox {...timelineBoxProps} />
+      )
+    }
+  </div>
+</div>

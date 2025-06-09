@@ -1,0 +1,42 @@
+---
+import Body from "./Body.astro";
+
+const TAG_COLOUR = {
+  green: {
+    backgroundColour: "bg-green",
+    textColour: "text-white",
+  },
+  blue: {
+    backgroundColour: "bg-blue",
+    textColour: "text-white",
+  },
+  red: {
+    backgroundColour: "bg-red",
+    textColour: "text-black",
+  },
+  yellow: {
+    backgroundColour: "bg-yellow",
+    textColour: "text-black",
+  },
+};
+
+export type TagColour = keyof typeof TAG_COLOUR;
+
+type Props = {
+  colour: TagColour;
+};
+
+const { colour } = Astro.props;
+
+const { backgroundColour, textColour } = TAG_COLOUR[colour] || TAG_COLOUR.green;
+---
+
+<div
+  class=`${backgroundColour} flex justify-center items-center w-[200px] h-[40px]`
+>
+  <Body>
+    <span class=`${textColour} text-[20px] font-light leading-[20px]`>
+      <slot />
+    </span>
+  </Body>
+</div>

@@ -1,0 +1,27 @@
+---
+import Grid from "../../components/Grid.astro";
+import Body from "../../components/typography/Body.astro";
+import HeadingTwo from "../../components/typography/HeadingTwo.astro";
+import { PROJECTS } from "../../content/index.ts";
+import Layout from "../../layouts/Layout.astro";
+
+export function getStaticPaths() {
+  return PROJECTS.map((project) => ({
+    params: { path: project.path },
+    props: project,
+  }));
+}
+
+const { title, description } = Astro.props;
+
+console.log(Astro.params);
+---
+
+<Layout>
+  <Grid>
+    <div>
+      <HeadingTwo>{title}</HeadingTwo>
+      <Body>{description}</Body>
+    </div>
+  </Grid>
+</Layout>

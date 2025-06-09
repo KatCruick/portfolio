@@ -1,0 +1,111 @@
+---
+import { Picture } from "astro:assets";
+import heroImage from "../assets/images/kat-one.jpg";
+
+import HeadingOne from "../components/typography/HeadingOne.astro";
+import HeadingTwo from "../components/typography/HeadingTwo.astro";
+import HeadingFour from "../components/typography/HeadingFour.astro";
+
+import Layout from "../layouts/Layout.astro";
+import ProjectBox from "../components/ProjectBox.astro";
+import Grid from "../components/Grid.astro";
+import Subheading from "../components/typography/Subheading.astro";
+import SubheadingThree from "../components/typography/SubheadingThree.astro";
+import SubheadingOne from "../components/typography/SubheadingOne.astro";
+import IconButton from "../components/IconButton.astro";
+
+import Instagram from "../assets/icons/instagram.svg";
+import Linkedin from "../assets/icons/linkedin.svg";
+import Mail from "../assets/icons/mail.svg";
+import Person from "../assets/icons/person.svg";
+
+import { type Props as TileProps } from "../components/ProjectBox.astro";
+import { PROJECTS } from "../content";
+import { getVariantByIndex } from "../services/getVariantByIndex";
+
+const TILE_COLOURS: TileProps["tagColour"][] = [
+  "green",
+  "yellow",
+  "blue",
+  "red"
+];
+---
+
+<Layout>
+  <!-- <div class="relative">
+    <div class="absolute z-1 w-full">
+      <Picture
+        src={heroImage}
+        formats={["avif", "webp"]}
+        alt="A description of my image."
+      />
+    </div>
+  </div> -->
+
+  <Grid>
+    <div class="z-10 flex h-screen w-full justify-center">
+      <div class="flex w-fit flex-col gap-y-5">
+        <HeadingOne> Hello. </HeadingOne>
+
+        <div class="flex justify-center gap-2 md:gap-3">
+          <HeadingFour> My name is </HeadingFour>
+          <div class="bg-red mt-3 p-2 md:mt-6 md:p-3">
+            <HeadingFour> Kat. </HeadingFour>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-[630px] pb-[104px]">
+      <div>
+        <span class="flex items-baseline">
+          <SubheadingThree> I am a&nbsp; </SubheadingThree>
+          <SubheadingOne> UX designer and researcher </SubheadingOne>
+        </span>
+      </div>
+      <SubheadingThree> creating in London, United Kingdom. </SubheadingThree>
+    </div>
+
+    <div class="flex w-full justify-center">
+      <HeadingTwo>Projects</HeadingTwo>
+    </div>
+
+    <div class="flex flex-col gap-y-10 pt-10">
+      {
+        PROJECTS.map((project, index) => (
+          <ProjectBox
+            href={`project/${project.path}`}
+            title={project.title}
+            tagColour={getVariantByIndex(TILE_COLOURS, index)}
+            description={project.description}
+            projectNumber={index + 1}
+          />
+        ))
+      }
+    </div>
+
+    <div class="flex justify-center pt-20">
+      <HeadingTwo>Want to say hi?</HeadingTwo>
+    </div>
+
+    <div class="flex justify-center gap-x-[120px] pt-10">
+      <IconButton
+        href="https://www.linkedin.com/in/katcruickshank/"
+        colour="green"
+      >
+        <Linkedin />
+      </IconButton>
+      <IconButton href="mailto:katrinaicruickshank@gmail.com">
+        <Mail />
+      </IconButton>
+      <IconButton href="" colour="blue">
+        <Person />
+      </IconButton>
+      <IconButton href="https://www.instagram.com/_whatkatmakes/" colour="red">
+        <Instagram />
+      </IconButton>
+    </div>
+
+    <div class="h-screen"></div>
+  </Grid>
+</Layout>

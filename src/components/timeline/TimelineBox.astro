@@ -1,0 +1,30 @@
+---
+import Body from "../typography/Body.astro";
+
+type Props = {
+  title: string;
+  description: string;
+};
+
+const { title, description } = Astro.props;
+---
+
+<div class="flex w-full flex-col border-2 px-4 py-6">
+  <h2 class="font-sans text-[30px] font-bold">{title}</h2>
+  <Body> {description} </Body>
+  <ul>
+    <li>
+      <Body>Wanted to understand why people behave as they do</Body>
+    </li>
+    <li>
+      <Body>
+        Developed an interest in conducting secondary and primary research</Body
+      >
+    </li>
+    <li>
+      <Body>
+        Conducted experiments in social psychology and cognitive neuroscience</Body
+      >
+    </li>
+  </ul>
+</div>

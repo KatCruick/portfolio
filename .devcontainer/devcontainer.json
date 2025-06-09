@@ -1,0 +1,39 @@
+{
+  "name": "Kat's website",
+  "build": {
+    "dockerfile": "../Dockerfile"
+  },
+  "portsAttributes": {
+    "4321": {
+      "label": "Application",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "forwardPorts": [
+    4321
+  ],
+  "postCreateCommand": "npm install && npm run build",
+  "waitFor": "postCreateCommand",
+  "postAttachCommand": {
+    "Server": "npm run dev --host"
+  },
+  "runArgs": [
+    "--rm"
+  ],
+  "overrideCommand": false,
+  "shutdownAction": "stopContainer",
+  "customizations": {
+    "codespaces": {
+      "openFiles": [
+        "src/pages/index.astro"
+      ]
+    },
+    "vscode": {
+      "extensions": [
+        "astro-build.astro-vscode",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss"
+      ]
+    }
+  }
+}

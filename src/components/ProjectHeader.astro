@@ -1,0 +1,18 @@
+---
+import HeadingOne from "../components/typography/HeadingOne.astro";
+import Subheading from "../components/typography/Subheading.astro";
+import Tag from "../components/typography/Tag.astro";
+
+const { heading, subheading, tags } = Astro.props;
+---
+
+<>
+  <div class="flex flex-col gap-y-3">
+    <HeadingOne>{heading}</HeadingOne>
+    <Subheading>{subheading}</Subheading>
+  </div>
+  <div class="pt-9"></div>
+  <div class="flex flex-row gap-x-[60px]">
+    <slot />
+  </div>
+</>

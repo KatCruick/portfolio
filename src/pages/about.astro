@@ -1,0 +1,50 @@
+---
+import HeadingOne from "../components/typography/HeadingOne.astro";
+import HeadingFour from "../components/typography/HeadingFour.astro";
+
+import Layout from "../layouts/Layout.astro";
+import Grid from "../components/Grid.astro";
+import Body from "../components/typography/Body.astro";
+import HeadingTwo from "../components/typography/HeadingTwo.astro";
+import Timeline from "../components/timeline/Timeline.astro";
+---
+
+<Layout>
+  <Grid>
+    <div class="flex h-screen w-full justify-center pt-[5%]">
+      <div class="flex w-full flex-col gap-y-5">
+        <HeadingFour> I am </HeadingFour>
+        <HeadingOne> Kat Cruickshank. </HeadingOne>
+        <div class="flex w-full justify-end">
+          <HeadingFour> It's nice to meet you. </HeadingFour>
+        </div>
+      </div>
+    </div>
+
+    <div class="h-screen">
+      <Body>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+        sollicitudin, lacus eu tempor fringilla, velit orci sagittis lorem, et
+        fermentum nisi metus quis libero. In nisl enim, venenatis sed urna nec,
+        pellentesque dictum lectus. Nulla a leo at justo feugiat faucibus nec ut
+        nibh. Fusce convallis enim sed erat vehicula consectetur. Vestibulum
+        massa mi, aliquet ac ornare quis, scelerisque vel erat. Cras suscipit,
+        tellus ut placerat posuere, urna felis posuere mi, sit amet rutrum odio
+        neque et dui. Donec diam urna, suscipit ac rhoncus et, hendrerit ut
+        nunc. Quisque vitae fringilla metus. Phasellus nec sagittis diam. Sed
+        ante nisl, dictum sit amet suscipit ac, volutpat sed enim. Praesent quis
+        urna eros. Pellentesque habitant morbi tristique senectus et netus et
+        malesuada fames ac turpis egestas. Phasellus placerat ullamcorper leo,
+        eget mollis odio placerat ut. Donec tempor in augue ac vestibulum.
+      </Body>
+    </div>
+
+    <div class="flex w-full justify-center pb-10">
+      <HeadingTwo>Past life</HeadingTwo>
+    </div>
+
+    <Timeline />
+
+    <div class="h-screen"></div>
+  </Grid>
+</Layout>

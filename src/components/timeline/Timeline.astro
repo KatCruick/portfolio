@@ -1,0 +1,26 @@
+---
+import TimelineRow from "./TimelineRow.astro";
+import { TIMELINE } from "../../content/index.ts";
+import { getVariantByIndex } from "../../services/getVariantByIndex";
+
+const DIRECTIONS = ["left", "right"] as const;
+
+const COLOURS = ["red", "blue", "yellow", "green"] as const;
+---
+
+<div class="relative flex flex-col">
+  <div class="absolute flex h-full w-full justify-center">
+    <div class="h-full border-[1px] bg-black"></div>
+  </div>
+  <div class="z-10 py-10">
+    {
+      TIMELINE.map((item, index) => (
+        <TimelineRow
+          direction={getVariantByIndex(DIRECTIONS, index)}
+          colour={getVariantByIndex(COLOURS, index)}
+          {...item}
+        />
+      ))
+    }
+  </div>
+</div>
