@@ -1,20 +1,20 @@
 ---
-import Grid from "./Grid.astro";
-import NavButton from "./NavButton.astro";
-import Body from "./typography/Body.astro";
+import Grid from './Grid.astro';
+import NavButton from './NavButton.astro';
+import Body from './typography/Body.astro';
 ---
 
-<div class="flex fixed top-0 left-0 z-50 w-full py-5 bg-white">
+<div class="fixed top-0 left-0 z-50 flex w-full bg-white py-5">
   <Grid>
     <div class="flex w-full justify-between">
-      <div class="rounded-full bg-yellow h-[100px] w-[100px]"></div>
+      <div class="bg-yellow h-[100px] w-[100px] rounded-full"></div>
       <div class="flex items-center gap-x-16">
         <NavButton label="Home" href="/" />
         <NavButton label="Projects" href="/projects" />
         <NavButton label="About" href="/about" />
         <a
           href="/extra"
-          class="flex rounded-full h-[60px] w-[60px] items-center justify-center bg-blue hover:bg-green"
+          class="bg-blue hover:bg-green flex h-[60px] w-[60px] items-center justify-center rounded-full"
         >
           <Body> <span class="text-white"> Extra </span> </Body>
         </a>

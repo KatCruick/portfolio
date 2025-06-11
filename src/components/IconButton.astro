@@ -1,9 +1,9 @@
 ---
 const COLOURS = {
-  yellow: "hover:bg-yellow",
-  blue: "hover:bg-blue",
-  green: "hover:bg-green",
-  red: "hover:bg-red",
+  yellow: 'hover:bg-yellow',
+  blue: 'hover:bg-blue',
+  green: 'hover:bg-green',
+  red: 'hover:bg-red',
 };
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
   colour?: keyof typeof COLOURS;
 };
 
-const { href, colour = "yellow" } = Astro.props;
+const { href, colour = 'yellow' } = Astro.props;
 
 const colourClass = COLOURS[colour];
 ---

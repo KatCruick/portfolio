@@ -1,33 +1,29 @@
 ---
-import { Picture } from "astro:assets";
-import heroImage from "../assets/images/kat-one.jpg";
+import HeadingOne from '../components/typography/HeadingOne.astro';
+import HeadingTwo from '../components/typography/HeadingTwo.astro';
+import HeadingFour from '../components/typography/HeadingFour.astro';
 
-import HeadingOne from "../components/typography/HeadingOne.astro";
-import HeadingTwo from "../components/typography/HeadingTwo.astro";
-import HeadingFour from "../components/typography/HeadingFour.astro";
+import Layout from '../layouts/Layout.astro';
+import ProjectBox from '../components/ProjectBox.astro';
+import Grid from '../components/Grid.astro';
+import SubheadingThree from '../components/typography/SubheadingThree.astro';
+import SubheadingOne from '../components/typography/SubheadingOne.astro';
+import IconButton from '../components/IconButton.astro';
 
-import Layout from "../layouts/Layout.astro";
-import ProjectBox from "../components/ProjectBox.astro";
-import Grid from "../components/Grid.astro";
-import Subheading from "../components/typography/Subheading.astro";
-import SubheadingThree from "../components/typography/SubheadingThree.astro";
-import SubheadingOne from "../components/typography/SubheadingOne.astro";
-import IconButton from "../components/IconButton.astro";
+import Instagram from '../assets/icons/instagram.svg';
+import Linkedin from '../assets/icons/linkedin.svg';
+import Mail from '../assets/icons/mail.svg';
+import Person from '../assets/icons/person.svg';
 
-import Instagram from "../assets/icons/instagram.svg";
-import Linkedin from "../assets/icons/linkedin.svg";
-import Mail from "../assets/icons/mail.svg";
-import Person from "../assets/icons/person.svg";
+import { type Props as TileProps } from '../components/ProjectBox.astro';
+import { PROJECTS } from '../content';
+import { getVariantByIndex } from '../services/getVariantByIndex';
 
-import { type Props as TileProps } from "../components/ProjectBox.astro";
-import { PROJECTS } from "../content";
-import { getVariantByIndex } from "../services/getVariantByIndex";
-
-const TILE_COLOURS: TileProps["tagColour"][] = [
-  "green",
-  "yellow",
-  "blue",
-  "red"
+const TILE_COLOURS: TileProps['tagColour'][] = [
+  'green',
+  'yellow',
+  'blue',
+  'red',
 ];
 ---
 
@@ -36,7 +32,7 @@ const TILE_COLOURS: TileProps["tagColour"][] = [
     <div class="absolute z-1 w-full">
       <Picture
         src={heroImage}
-        formats={["avif", "webp"]}
+        formats={['avif', 'webp']}
         alt="A description of my image."
       />
     </div>

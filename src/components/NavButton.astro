@@ -1,5 +1,5 @@
 ---
-import SubheadingFour from "./typography/SubheadingFour.astro";
+import SubheadingFour from './typography/SubheadingFour.astro';
 
 type Props = {
   href: string;
@@ -10,7 +10,7 @@ const { href, label } = Astro.props;
 
 const currentPath = Astro.url.pathname;
 
-const activeClass = currentPath === href ? "bg-yellow" : "bg-none";
+const activeClass = currentPath === href ? 'bg-yellow' : 'bg-none';
 ---
 
 <a href={href}>
