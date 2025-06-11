@@ -1,5 +1,6 @@
 ---
-import Body from "../typography/Body.astro";
+import SubheadingFour from '../typography/SubheadingFour.astro';
+import SubheadingOne from '../typography/SubheadingOne.astro';
 
 type Props = {
   title: string;
@@ -10,21 +11,19 @@ const { title, description } = Astro.props;
 ---
 
 <div class="flex w-full flex-col border-2 px-4 py-6">
-  <h2 class="font-sans text-[30px] font-bold">{title}</h2>
-  <Body> {description} </Body>
-  <ul>
+  <SubheadingOne>
+    {title}
+  </SubheadingOne>
+  <div class="pt-1">
+    <SubheadingFour>
+      {description}
+    </SubheadingFour>
+  </div>
+  <ul class="type-body list-disc pt-4 pl-6">
+    <li>Wanted to understand why people behave as they do</li>
+    <li>Developed an interest in conducting secondary and primary research</li>
     <li>
-      <Body>Wanted to understand why people behave as they do</Body>
-    </li>
-    <li>
-      <Body>
-        Developed an interest in conducting secondary and primary research</Body
-      >
-    </li>
-    <li>
-      <Body>
-        Conducted experiments in social psychology and cognitive neuroscience</Body
-      >
+      Conducted experiments in social psychology and cognitive neuroscience
     </li>
   </ul>
 </div>

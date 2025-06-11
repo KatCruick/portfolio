@@ -1,9 +1,9 @@
-@import "tailwindcss";
-@import "@alastairgarner/pangram-editorial-old";
+@import 'tailwindcss';
+@import '@alastairgarner/pangram-editorial-old';
 
 @theme {
-  --font-sans: "DM Sans Variable", sans-serif;
-  --font-serif: "Editorial Old", serif;
+  --font-sans: 'DM Sans Variable', sans-serif;
+  --font-serif: 'Editorial Old', serif;
 
   --color-red: #f16141;
   --color-red-50: #fdebe7;
@@ -63,4 +63,8 @@
   --color-cream-300: #f8f6ec;
   --color-cream-400: #f6f2e5;
   --color-cream-500: #f4f0e0;
+}
+
+.type-body {
+  @apply font-sans text-[18px] leading-[24px] font-normal;
 }
