@@ -1,0 +1,55 @@
+---
+import NavButton from '../NavButton.astro';
+import Body from '../typography/Body.astro';
+---
+
+<div
+  data-navbar-overlay
+  class="pointer-events-none fixed h-full w-full bg-black opacity-0 transition-opacity duration-300 ease-in-out"
+>
+</div>
+<div class="absolute h-full">
+  <div
+    data-navbar-slider
+    class="fixed right-0 z-[60] flex h-full translate-x-[155px] transition-transform duration-300 ease-in-out"
+  >
+    <div
+      data-navbar-tab
+      class="mt-5 h-[50px] w-[20px] border-2 border-r-white bg-white"
+    >
+    </div>
+    <div class="h-full w-[155px] bg-white outline-2">
+      <div class="flex flex-col items-center gap-y-4 py-8">
+        <NavButton label="Home" href="/" />
+        <NavButton label="Projects" href="/projects" />
+        <NavButton label="About" href="/about" />
+        <a
+          href="/extra"
+          class="bg-blue hover:bg-green flex h-[60px] w-[60px] items-center justify-center rounded-full"
+        >
+          <Body> <span class="text-white"> Extra </span> </Body>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const overlay = document.querySelector('[data-navbar-overlay]');
+  const navbarSlider = document.querySelector('[data-navbar-slider]');
+  const navbarTab = document.querySelector('[data-navbar-tab]');
+
+  navbarTab?.addEventListener('click', () => {
+    console.log('clicked');
+    overlay?.classList.toggle('opacity-50');
+    overlay?.classList.toggle('pointer-events-none');
+    navbarSlider?.classList.toggle('translate-x-[155px]');
+  });
+
+  overlay?.addEventListener('click', () => {
+    console.log('overlay clicked');
+    overlay?.classList.toggle('opacity-50');
+    overlay?.classList.toggle('pointer-events-none');
+    navbarSlider?.classList.add('translate-x-[155px]');
+  });
+</script>

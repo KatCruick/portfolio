@@ -18,6 +18,7 @@ import Person from '../assets/icons/person.svg';
 import { type Props as TileProps } from '../components/ProjectBox.astro';
 import { PROJECTS } from '../content';
 import { getVariantByIndex } from '../services/getVariantByIndex';
+import Hover from '../components/Hover.astro';
 
 const TILE_COLOURS: TileProps['tagColour'][] = [
   'green',
@@ -65,6 +66,8 @@ const TILE_COLOURS: TileProps['tagColour'][] = [
     <div class="flex w-full justify-center">
       <HeadingTwo>Projects</HeadingTwo>
     </div>
+
+    <Hover />
 
     <div class="flex flex-col gap-y-10 pt-10">
       {

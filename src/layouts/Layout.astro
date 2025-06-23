@@ -3,7 +3,7 @@ import '../styles/global.css';
 
 import '@fontsource-variable/dm-sans';
 
-import Navbar from '../components/Navbar.astro';
+import Navbar from '../components/navbar/Navbar.astro';
 ---
 
 <html lang="en">
@@ -17,6 +17,8 @@ import Navbar from '../components/Navbar.astro';
   <body>
     <Navbar />
     <div class="h-[140px]"></div>
-    <slot />
+    <div class="overflow-x-hidden">
+      <slot />
+    </div>
   </body>
 </html>

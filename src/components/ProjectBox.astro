@@ -15,7 +15,11 @@ export type Props = {
 const { title, tagColour, description, projectNumber, href } = Astro.props;
 ---
 
-<a class="flex w-full gap-x-[68px] border-2 px-[68px] py-4" href={href}>
+<a
+  data-project-tile
+  class="flex w-full gap-x-[68px] border-2 px-[68px] py-4"
+  href={href}
+>
   <div class="flex grow items-center">
     <HeadingTwo>
       <span class="align-middle"> {projectNumber}. </span>
@@ -34,3 +38,39 @@ const { title, tagColour, description, projectNumber, href } = Astro.props;
     </div>
   </div>
 </a>
+
+<script>
+  const buttons = document.querySelectorAll('[data-project-tile]');
+
+  const tooltips = document.querySelectorAll('[data-hover-image]');
+
+  const tooltip = tooltips[0];
+
+  // Add event listeners to fire confetti when a button is clicked.
+  buttons.forEach((button) => {
+    button.addEventListener('mouseenter', () => {
+      console.log('hovered');
+
+      if (!tooltip) {
+        console.log('No tooltip found');
+        return;
+      }
+
+      const rect = button.getBoundingClientRect();
+
+      const scrollX = rect.left + window.scrollX;
+      const scrollY = rect.top + window.scrollY;
+
+      console.log('scrollX:', scrollX, 'scrollY:', scrollY);
+
+      tooltip.setAttribute(
+        'style',
+        `top: ${scrollY}px; right: ${scrollX}px; visibility: visible;`,
+      );
+    });
+
+    button.addEventListener('mouseleave', () => {
+      tooltip.setAttribute('style', `visibility: hidden;`);
+    });
+  });
+</script>
