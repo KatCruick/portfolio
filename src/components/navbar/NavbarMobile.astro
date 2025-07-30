@@ -35,21 +35,25 @@ import Body from '../typography/Body.astro';
 </div>
 
 <script>
-  const overlay = document.querySelector('[data-navbar-overlay]');
-  const navbarSlider = document.querySelector('[data-navbar-slider]');
-  const navbarTab = document.querySelector('[data-navbar-tab]');
+  function toggleMobileNavBar() {
+    const overlay = document.querySelector('[data-navbar-overlay]');
+    const navbarSlider = document.querySelector('[data-navbar-slider]');
+    const navbarTab = document.querySelector('[data-navbar-tab]');
 
-  navbarTab?.addEventListener('click', () => {
-    console.log('clicked');
-    overlay?.classList.toggle('opacity-50');
-    overlay?.classList.toggle('pointer-events-none');
-    navbarSlider?.classList.toggle('translate-x-[155px]');
-  });
+    navbarTab?.addEventListener('click', () => {
+      console.log('clicked');
+      overlay?.classList.toggle('opacity-50');
+      overlay?.classList.toggle('pointer-events-none');
+      navbarSlider?.classList.toggle('translate-x-[155px]');
+    });
 
-  overlay?.addEventListener('click', () => {
-    console.log('overlay clicked');
-    overlay?.classList.toggle('opacity-50');
-    overlay?.classList.toggle('pointer-events-none');
-    navbarSlider?.classList.add('translate-x-[155px]');
-  });
+    overlay?.addEventListener('click', () => {
+      console.log('overlay clicked');
+      overlay?.classList.toggle('opacity-50');
+      overlay?.classList.toggle('pointer-events-none');
+      navbarSlider?.classList.add('translate-x-[155px]');
+    });
+  }
+
+  toggleMobileNavBar();
 </script>

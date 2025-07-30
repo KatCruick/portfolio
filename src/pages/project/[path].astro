@@ -1,9 +1,15 @@
 ---
 import Grid from '../../components/Grid.astro';
+import SectionTextRight from '../../components/project/SectionTextRight.astro';
+import SectionTextLeft from '../../components/project/SectionTextLeft.astro';
+import SectionTextFullWidth from '../../components/project/SectionTextFullWidth.astro';
+import SectionTextBoxes from '../../components/project/SectionTextBoxes.astro';
+import SectionTextNarrow from '../../components/project/SectionTextNarrow.astro';
 import Body from '../../components/typography/Body.astro';
 import HeadingTwo from '../../components/typography/HeadingTwo.astro';
 import { PROJECTS } from '../../content/index.ts';
 import Layout from '../../layouts/Layout.astro';
+import SectionImage from '../../components/project/SectionImage.astro';
 
 export function getStaticPaths() {
   return PROJECTS.map((project) => ({
@@ -22,6 +28,20 @@ console.log(Astro.params);
     <div>
       <HeadingTwo>{title}</HeadingTwo>
       <Body>{description}</Body>
+
+      <div class="flex flex-col gap-y-20 py-20">
+        <SectionTextRight />
+
+        <SectionTextLeft />
+
+        <SectionTextFullWidth />
+
+        <SectionTextBoxes />
+
+        <SectionImage />
+
+        <SectionTextNarrow />
+      </div>
     </div>
   </Grid>
 </Layout>
