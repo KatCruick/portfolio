@@ -5,8 +5,11 @@ import HeadingOne from '../components/typography/HeadingOne.astro';
 import ProjectBox from '../components/ProjectBox.astro';
 import { PROJECTS } from '../content';
 import { getVariantByIndex } from '../services/getVariantByIndex';
+import { getProjects } from '../services/getProjects';
 
 const TILE_COLOURS = ['green', 'yellow', 'blue', 'red'] as const;
+
+const projects = await getProjects();
 ---
 
 <Layout>
@@ -15,6 +18,9 @@ const TILE_COLOURS = ['green', 'yellow', 'blue', 'red'] as const;
       <div class="flex w-full flex-col items-center">
         <HeadingOne> Projects. </HeadingOne>
       </div>
+    </div>
+    <div class="flex flex-col gap-y-10 pt-10">
+      {projects['project-1'].map(({ body }) => <p>{body}</p>)}
     </div>
 
     <div class="flex flex-col gap-y-10 pt-10">
