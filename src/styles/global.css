@@ -65,6 +65,28 @@
   --color-cream-500: #f4f0e0;
 }
 
-.type-body {
+@utility type-h1 {
+  @apply font-serif text-[60px] leading-[60px] font-bold tracking-[0.02em] md:text-[112px] md:leading-[168px];
+}
+
+@utility type-h2 {
+  @apply font-serif text-[30px] leading-[30px] font-bold tracking-[0.02em] md:text-[56px] md:leading-[84px];
+}
+
+@utility type-body {
   @apply font-sans text-[18px] leading-[24px] font-normal;
+}
+
+.prose {
+  h1 {
+    @apply type-h1;
+  }
+
+  h2 {
+    @apply type-h2 text-center;
+  }
+
+  p {
+    @apply type-body;
+  }
 }

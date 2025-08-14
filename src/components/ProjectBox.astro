@@ -6,13 +6,15 @@ import Tag, { type TagColour } from './typography/Tag.astro';
 
 export type Props = {
   title: string;
-  tagColour: TagColour;
   description: string;
+  tags?: string[];
+  tagColour: TagColour;
   projectNumber: number;
   href: string;
 };
 
-const { title, tagColour, description, projectNumber, href } = Astro.props;
+const { title, tagColour, description, projectNumber, href, tags } =
+  Astro.props;
 ---
 
 <a
@@ -29,9 +31,7 @@ const { title, tagColour, description, projectNumber, href } = Astro.props;
   <div class="flex flex-col">
     <SubheadingOne>{title}</SubheadingOne>
     <div class="flex gap-x-8 pt-2">
-      <Tag colour={tagColour}>Tag</Tag>
-      <Tag colour={tagColour}>Tag</Tag>
-      <Tag colour={tagColour}>Tag</Tag>
+      {tags?.map((tag) => <Tag colour={tagColour}>{tag}</Tag>)}
     </div>
     <div class="pt-6">
       <Body>{description}</Body>
