@@ -1,12 +1,12 @@
 ---
+import { render, getCollection } from 'astro:content';
+
 import Grid from '../../components/Grid.astro';
 import Layout from '../../layouts/Layout.astro';
-import { getProjects } from '../../services/getProjects';
-import { render } from 'astro:content';
 import HeadingOne from '../../components/typography/HeadingOne.astro';
 
 export async function getStaticPaths() {
-  const projects = await getProjects();
+  const projects = await getCollection('projects');
 
   return projects.map((project) => ({
     params: { path: project.id },
