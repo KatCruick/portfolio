@@ -8,6 +8,6 @@ The hope is that Kat will eventually be able to maintain this project solo. If w
 
 Seemingly at odds with the statement above, we will use Typescript. While the learning curve is steep, the benefits of strong typing are too important to ignore.
 
-**Decision: Can't use MDX for content blocks.**
+**Correction: Use MDX for content blocks.**
 
-I looked into using MDX to component-ise the content blocks in a single markdown file, but this was a no-go.
+I didn't realise you could import an astro component into an mdx file. But given you can, it's a great way to style blocks of content within a single markdown file.

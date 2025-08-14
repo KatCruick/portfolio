@@ -7,9 +7,7 @@ import TextBox from './TextBox.astro';
     [1, 2, 3, 4].map(() => (
       <div class="basis-1/4">
         <TextBox>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-          sollicitudin, lacus eu tempor fringilla, velit orci sagittis lorem, et
-          fermentum nisi metus quis libero.
+          <slot />
         </TextBox>
       </div>
     ))

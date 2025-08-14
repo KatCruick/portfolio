@@ -1,15 +1,15 @@
 ---
+import { getCollection } from 'astro:content';
+
 import Layout from '../layouts/Layout.astro';
 import Grid from '../components/Grid.astro';
 import HeadingOne from '../components/typography/HeadingOne.astro';
 import ProjectBox from '../components/ProjectBox.astro';
-import { PROJECTS } from '../content';
 import { getVariantByIndex } from '../services/getVariantByIndex';
-import { getProjects } from '../services/getProjects';
 
 const TILE_COLOURS = ['green', 'yellow', 'blue', 'red'] as const;
 
-const projects = await getProjects();
+const projects = await getCollection('projects');
 ---
 
 <Layout>
@@ -19,18 +19,16 @@ const projects = await getProjects();
         <HeadingOne> Projects. </HeadingOne>
       </div>
     </div>
-    <div class="flex flex-col gap-y-10 pt-10">
-      {projects['project-1'].map(({ body }) => <p>{body}</p>)}
-    </div>
 
-    <div class="flex flex-col gap-y-10 pt-10">
+    <div class="flex flex-col gap-y-10 py-10">
       {
-        PROJECTS.map((project, index) => (
+        projects.map((project, index) => (
           <ProjectBox
-            href={`project/${project.path}`}
-            title={project.title}
+            href={`project/${project.id}`}
+            title={project.data.title}
+            description={project.data.description}
+            tags={project.data.tags}
             tagColour={getVariantByIndex(TILE_COLOURS, index)}
-            description={project.description}
             projectNumber={index + 1}
           />
         ))
