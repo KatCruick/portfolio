@@ -1,5 +1,5 @@
 ---
-import SubheadingFour from './typography/SubheadingFour.astro';
+import Text from './Text.astro';
 
 type Props = {
   href: string;
@@ -15,9 +15,9 @@ const activeClass = currentPath === href ? 'bg-yellow' : 'bg-none';
 
 <a href={href}>
   <div class="group flex flex-col items-center p-2">
-    <SubheadingFour>
+    <Text type="sh4">
       {label}
-    </SubheadingFour>
+    </Text>
     <div class={`${activeClass} w-20 h-1 group-has-hover:bg-yellow`}></div>
   </div>
 </a>

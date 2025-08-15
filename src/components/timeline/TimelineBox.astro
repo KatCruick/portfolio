@@ -1,6 +1,5 @@
 ---
-import SubheadingFour from '../typography/SubheadingFour.astro';
-import SubheadingOne from '../typography/SubheadingOne.astro';
+import Text from '../Text.astro';
 
 type Props = {
   title: string;
@@ -11,13 +10,13 @@ const { title, description } = Astro.props;
 ---
 
 <div class="flex w-full flex-col border-2 px-4 py-6">
-  <SubheadingOne>
+  <Text type="sh1">
     {title}
-  </SubheadingOne>
+  </Text>
   <div class="pt-1">
-    <SubheadingFour>
+    <Text type="sh4">
       {description}
-    </SubheadingFour>
+    </Text>
   </div>
   <ul class="type-body list-disc pt-4 pl-6">
     <li>Wanted to understand why people behave as they do</li>

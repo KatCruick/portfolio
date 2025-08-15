@@ -1,24 +1,18 @@
 ---
-import HeadingOne from '../components/typography/HeadingOne.astro';
-import HeadingTwo from '../components/typography/HeadingTwo.astro';
-import HeadingFour from '../components/typography/HeadingFour.astro';
+import { getCollection } from 'astro:content';
 
 import Layout from '../layouts/Layout.astro';
 import ProjectBox from '../components/ProjectBox.astro';
 import Grid from '../components/Grid.astro';
-import SubheadingThree from '../components/typography/SubheadingThree.astro';
-import SubheadingOne from '../components/typography/SubheadingOne.astro';
 import IconButton from '../components/IconButton.astro';
-
 import Instagram from '../assets/icons/instagram.svg';
 import Linkedin from '../assets/icons/linkedin.svg';
 import Mail from '../assets/icons/mail.svg';
 import Person from '../assets/icons/person.svg';
-
 import { type Props as TileProps } from '../components/ProjectBox.astro';
-import { PROJECTS } from '../content';
 import { getVariantByIndex } from '../services/getVariantByIndex';
 import Hover from '../components/Hover.astro';
+import Text from '../components/Text.astro';
 
 const TILE_COLOURS: TileProps['tagColour'][] = [
   'green',
@@ -26,6 +20,8 @@ const TILE_COLOURS: TileProps['tagColour'][] = [
   'blue',
   'red',
 ];
+
+const projects = await getCollection('projects');
 ---
 
 <Layout>
@@ -42,12 +38,12 @@ const TILE_COLOURS: TileProps['tagColour'][] = [
   <Grid>
     <div class="z-10 flex h-screen w-full justify-center">
       <div class="flex w-fit flex-col gap-y-5">
-        <HeadingOne> Hello. </HeadingOne>
+        <Text type="h1"> Hello. </Text>
 
         <div class="flex justify-center gap-2 md:gap-3">
-          <HeadingFour> My name is </HeadingFour>
+          <Text type="h4"> My name is </Text>
           <div class="bg-red mt-3 p-2 md:mt-6 md:p-3">
-            <HeadingFour> Kat. </HeadingFour>
+            <Text type="h4"> Kat. </Text>
           </div>
         </div>
       </div>
@@ -56,27 +52,28 @@ const TILE_COLOURS: TileProps['tagColour'][] = [
     <div class="w-[630px] pb-[104px]">
       <div>
         <span class="flex items-baseline">
-          <SubheadingThree> I am a&nbsp; </SubheadingThree>
-          <SubheadingOne> UX designer and researcher </SubheadingOne>
+          <Text type="sh3"> I am a&nbsp; </Text>
+          <Text type="sh1"> UX designer and researcher </Text>
         </span>
       </div>
-      <SubheadingThree> creating in London, United Kingdom. </SubheadingThree>
+      <Text type="sh3"> creating in London, United Kingdom. </Text>
     </div>
 
     <div class="flex w-full justify-center">
-      <HeadingTwo>Projects</HeadingTwo>
+      <Text type="h2">Projects</Text>
     </div>
 
     <Hover />
 
     <div class="flex flex-col gap-y-10 pt-10">
       {
-        PROJECTS.map((project, index) => (
+        projects.map((project, index) => (
           <ProjectBox
-            href={`project/${project.path}`}
-            title={project.title}
+            href={`project/${project.id}`}
+            title={project.data.title}
+            description={project.data.description}
+            tags={project.data.tags}
             tagColour={getVariantByIndex(TILE_COLOURS, index)}
-            description={project.description}
             projectNumber={index + 1}
           />
         ))
@@ -84,7 +81,7 @@ const TILE_COLOURS: TileProps['tagColour'][] = [
     </div>
 
     <div class="flex justify-center pt-20">
-      <HeadingTwo>Want to say hi?</HeadingTwo>
+      <Text type="h2">Want to say hi?</Text>
     </div>
 
     <div class="flex justify-center gap-x-[120px] pt-10">

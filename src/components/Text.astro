@@ -1,0 +1,32 @@
+---
+import type { HTMLTag } from 'astro/types';
+
+type ElementProps = {
+  tag: HTMLTag;
+  classNames: string;
+};
+
+const TYPOGRAPHIC_ELEMENT_MAP = {
+  h1: { tag: 'h1', classNames: 'type-h1' },
+  h2: { tag: 'h2', classNames: 'type-h2' },
+  h3: { tag: 'h3', classNames: 'type-h3' },
+  h4: { tag: 'h3', classNames: 'type-h4' },
+  sh1: { tag: 'h4', classNames: 'type-sh1' },
+  sh2: { tag: 'h5', classNames: 'type-sh2' },
+  sh3: { tag: 'h6', classNames: 'type-sh3' },
+  sh4: { tag: 'h6', classNames: 'type-sh4' },
+  body: { tag: 'body', classNames: 'type-body' },
+} satisfies Record<string, ElementProps>;
+
+type Props = {
+  type: keyof typeof TYPOGRAPHIC_ELEMENT_MAP;
+};
+
+const { type } = Astro.props;
+
+const { tag: Element, classNames } = TYPOGRAPHIC_ELEMENT_MAP[type];
+---
+
+<Element class={classNames}>
+  <slot />
+</Element>

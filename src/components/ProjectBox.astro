@@ -1,8 +1,6 @@
 ---
-import SubheadingOne from '../components/typography/SubheadingOne.astro';
-import HeadingTwo from '../components/typography/HeadingTwo.astro';
-import Body from '../components/typography/Body.astro';
-import Tag, { type TagColour } from './typography/Tag.astro';
+import Tag, { type TagColour } from './Tag.astro';
+import Text from './Text.astro';
 
 export type Props = {
   title: string;
@@ -23,18 +21,20 @@ const { title, tagColour, description, projectNumber, href, tags } =
   href={href}
 >
   <div class="flex grow items-center">
-    <HeadingTwo>
+    <Text type="h2">
       <span class="align-middle"> {projectNumber}. </span>
-    </HeadingTwo>
+    </Text>
   </div>
 
   <div class="flex flex-col">
-    <SubheadingOne>{title}</SubheadingOne>
+    <Text type="sh1">{title}</Text>
     <div class="flex gap-x-8 pt-2">
       {tags?.map((tag) => <Tag colour={tagColour}>{tag}</Tag>)}
     </div>
     <div class="pt-6">
-      <Body>{description}</Body>
+      <Text type="body">
+        {description}
+      </Text>
     </div>
   </div>
 </a>

@@ -1,22 +1,22 @@
 ---
-import Body from "./Body.astro";
+import Text from './Text.astro';
 
 const TAG_COLOUR = {
   green: {
-    backgroundColour: "bg-green",
-    textColour: "text-white",
+    backgroundColour: 'bg-green',
+    textColour: 'text-white',
   },
   blue: {
-    backgroundColour: "bg-blue",
-    textColour: "text-white",
+    backgroundColour: 'bg-blue',
+    textColour: 'text-white',
   },
   red: {
-    backgroundColour: "bg-red",
-    textColour: "text-black",
+    backgroundColour: 'bg-red',
+    textColour: 'text-black',
   },
   yellow: {
-    backgroundColour: "bg-yellow",
-    textColour: "text-black",
+    backgroundColour: 'bg-yellow',
+    textColour: 'text-black',
   },
 };
 
@@ -34,9 +34,9 @@ const { backgroundColour, textColour } = TAG_COLOUR[colour] || TAG_COLOUR.green;
 <div
   class=`${backgroundColour} flex justify-center items-center w-[200px] h-[40px]`
 >
-  <Body>
+  <Text type="body">
     <span class=`${textColour} text-[20px] font-light leading-[20px]`>
       <slot />
     </span>
-  </Body>
+  </Text>
 </div>

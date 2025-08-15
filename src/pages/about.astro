@@ -1,30 +1,24 @@
 ---
-import HeadingOne from '../components/typography/HeadingOne.astro';
-import HeadingFour from '../components/typography/HeadingFour.astro';
-
 import Layout from '../layouts/Layout.astro';
 import Grid from '../components/Grid.astro';
-import HeadingTwo from '../components/typography/HeadingTwo.astro';
 import Timeline from '../components/timeline/Timeline.astro';
-import Typography, {
-  TYPOGRAPHIC_ELEMENT,
-} from '../components/typography/Typography.astro';
+import Text from '../components/Text.astro';
 ---
 
 <Layout>
   <Grid>
     <div class="flex h-screen justify-center pt-11">
       <div class="flex flex-col">
-        <HeadingFour> I am </HeadingFour>
-        <HeadingOne> Kat Cruickshank. </HeadingOne>
+        <Text type="h4"> I am </Text>
+        <Text type="h1"> Kat Cruickshank. </Text>
         <div class="flex w-full justify-end">
-          <HeadingFour> It's nice to meet you. </HeadingFour>
+          <Text type="h4"> It's nice to meet you. </Text>
         </div>
       </div>
     </div>
 
     <div class="h-screen">
-      <Typography type={TYPOGRAPHIC_ELEMENT.BODY}>
+      <Text type="body">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
         sollicitudin, lacus eu tempor fringilla, velit orci sagittis lorem, et
         fermentum nisi metus quis libero. In nisl enim, venenatis sed urna nec,
@@ -38,11 +32,11 @@ import Typography, {
         urna eros. Pellentesque habitant morbi tristique senectus et netus et
         malesuada fames ac turpis egestas. Phasellus placerat ullamcorper leo,
         eget mollis odio placerat ut. Donec tempor in augue ac vestibulum.
-      </Typography>
+      </Text>
     </div>
 
     <div class="flex w-full justify-center pb-10">
-      <HeadingTwo>Past life</HeadingTwo>
+      <Text type="h2">Past life</Text>
     </div>
 
     <Timeline />

@@ -1,8 +1,8 @@
 ---
-import HeadingThree from '../typography/HeadingThree.astro';
 import TimelineBox from './TimelineBox.astro';
 import { type TimelineElement } from '../../content/index.ts';
 import clsx from 'clsx';
+import Text from '../Text.astro';
 
 const COLOURS = {
   red: 'bg-red',
@@ -32,9 +32,9 @@ const colourClass = COLOURS[colour];
       direction === 'left' ? (
         <TimelineBox {...timelineBoxProps} />
       ) : (
-        <HeadingThree>
+        <Text type="h3">
           <span class="px-2 align-middle">{date}</span>
-        </HeadingThree>
+        </Text>
       )
     }
   </div>
@@ -44,9 +44,9 @@ const colourClass = COLOURS[colour];
   <div class="flex w-full basis-1/2 items-center">
     {
       direction === 'left' ? (
-        <HeadingThree>
+        <Text type="h3">
           <span class="px-2 align-middle">{date}</span>
-        </HeadingThree>
+        </Text>
       ) : (
         <TimelineBox {...timelineBoxProps} />
       )
