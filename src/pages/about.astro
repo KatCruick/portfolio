@@ -4,9 +4,11 @@ import HeadingFour from '../components/typography/HeadingFour.astro';
 
 import Layout from '../layouts/Layout.astro';
 import Grid from '../components/Grid.astro';
-import Body from '../components/typography/Body.astro';
 import HeadingTwo from '../components/typography/HeadingTwo.astro';
 import Timeline from '../components/timeline/Timeline.astro';
+import Typography, {
+  TYPOGRAPHIC_ELEMENT,
+} from '../components/typography/Typography.astro';
 ---
 
 <Layout>
@@ -22,7 +24,7 @@ import Timeline from '../components/timeline/Timeline.astro';
     </div>
 
     <div class="h-screen">
-      <Body>
+      <Typography type={TYPOGRAPHIC_ELEMENT.BODY}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
         sollicitudin, lacus eu tempor fringilla, velit orci sagittis lorem, et
         fermentum nisi metus quis libero. In nisl enim, venenatis sed urna nec,
@@ -36,7 +38,7 @@ import Timeline from '../components/timeline/Timeline.astro';
         urna eros. Pellentesque habitant morbi tristique senectus et netus et
         malesuada fames ac turpis egestas. Phasellus placerat ullamcorper leo,
         eget mollis odio placerat ut. Donec tempor in augue ac vestibulum.
-      </Body>
+      </Typography>
     </div>
 
     <div class="flex w-full justify-center pb-10">
