@@ -13,6 +13,9 @@ import { type Props as TileProps } from '../components/ProjectBox.astro';
 import { getVariantByIndex } from '../services/getVariantByIndex';
 import Hover from '../components/Hover.astro';
 import Text from '../components/Text.astro';
+import Picture from 'astro/components/Picture.astro';
+
+import heroImage from '../assets/images/kat-one.jpg';
 
 const TILE_COLOURS: TileProps['tagColour'][] = [
   'green',
@@ -25,15 +28,16 @@ const projects = await getCollection('projects');
 ---
 
 <Layout>
-  <!-- <div class="relative">
-    <div class="absolute z-1 w-full">
+  <div class="relative">
+    <div class="absolute w-full">
       <Picture
         src={heroImage}
         formats={['avif', 'webp']}
         alt="A description of my image."
+        layout="full-width"
       />
     </div>
-  </div> -->
+  </div>
 
   <Grid>
     <div class="z-10 flex h-screen w-full justify-center">
