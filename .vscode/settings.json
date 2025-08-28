@@ -4,4 +4,12 @@
   },
   "css.lint.unknownAtRules": "ignore",
   "dev.containers.dockerPath": "podman",
+  "[mdx]": {
+    "editor.wordWrapColumn": 120,
+    "editor.wordWrap": "bounded",
+  },
+  "[md]": {
+    "editor.wordWrapColumn": 120,
+    "editor.wordWrap": "bounded",
+  }
 }
