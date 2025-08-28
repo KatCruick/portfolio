@@ -12,13 +12,13 @@
 
 2. Make sure Podman is running on your machine.
 
-   In the Podman desktop app, you should see this if it's running.
+   In the Podman desktop app navigate to the "Dashboard" tab, scroll down and you should see this if it's running.
 
    ![Image](/public/readme/podman.png)
 
 3. Open Visual Studio Code (VS Code) and use the "Open Folder" option to open the folder where you cloned the repository.
 
-4. Press `Cmd + Shift + P` to open the "command palette" in VS Code. Start typing "Dev Containers", then select the option for "Dev Containers: Rebuild and Reopen in Container".
+4. Press `Cmd + Shift + P` to open the "command palette" in VS Code. Start typing "Reubild", then select the option for "Dev Containers: Rebuild and Reopen in Container".
 
    This will relaunch your VS Code window, but now it will be running your website inside of a "container". You might need to wait a minute or two as it sets up, but eventually it should launch the home page of the website in VS Code.
 
