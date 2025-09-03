@@ -40,7 +40,7 @@
 
 Each project page on your website is generated automatically from the `.mdx` files in the `src/content/projects/` folder. Every time you add a new `.mdx` file to this folder, a new project page will be created on your website.
 
-An `.mdx` file is otherwise known as a "Markdown" file. Markdown is a _plain text_ file type, meaning that it cannot itself display "markup", like images, different font styles, bold text, headings, etc, like you might be used to in a Word doc of Google doc. However, the Markdown syntax contains special characters/annotations that allow you to specify how you want the document to be rendered on your website. This is because the Markdown file will be converted to _converted to HTML_ (a markup language) before it is displayed in the browser.
+An `.mdx` file is otherwise known as a "Markdown" file. Markdown is a _plain text_ file type, meaning that it cannot itself display "markup", like images, different font styles, bold text, headings, etc, like you might be used to in a Word doc of Google doc. However, the Markdown syntax contains special characters/annotations that allow you to specify how you want the document to be rendered on your website. This is because the Markdown file will be _converted to HTML_ (a markup language) before it is displayed in the browser.
 
 If you navigate to `localhost:4321/projects/_example` you will see an example project page that demonstrates some of the Markdown syntax you can use in your project pages. These include using `#` for headings, `**bold text**` for bold text, `_italic text_` for italic text and `![Image](/path/to/image.png)` for images.
 
@@ -78,3 +78,5 @@ This begs the question: if I want to publish the changes I've made on my laptop 
 ### Git and Github
 
 On the face of it, "publishing" your changes means updating the remote copy of your website files (the ones in the cloud) with the local copy of your website files (the ones on your laptop).
+
+NOTE - draw a diagra to explain how the remote repo (Github) sits between collaborators and the server when the website is deployed.
