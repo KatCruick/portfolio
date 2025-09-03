@@ -9,7 +9,11 @@ import Text from '../components/Text.astro';
 
 const TILE_COLOURS = ['green', 'yellow', 'blue', 'red'] as const;
 
-const projects = await getCollection('projects');
+const projectsWithExamples = await getCollection('projects');
+
+const projects = projectsWithExamples.filter(
+  (project) => !project.id.startsWith('_'),
+);
 ---
 
 <Layout>
@@ -24,7 +28,7 @@ const projects = await getCollection('projects');
       {
         projects.map((project, index) => (
           <ProjectBox
-            href={`project/${project.id}`}
+            href={`projects/${project.id}`}
             title={project.data.title}
             description={project.data.description}
             tags={project.data.tags}
