@@ -30,6 +30,7 @@ if [ "$BEFORE" != "$AFTER" ]; then
     
     # Build the project
     echo -e "${YELLOW}Building project...${NC}"
+    npm install
     npm run build
     
     # Check if build was successful
