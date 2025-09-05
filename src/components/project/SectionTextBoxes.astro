@@ -1,13 +1,18 @@
 ---
 import TextBox from './TextBox.astro';
+import { getSlotChildren } from '../../services/getSlotChildren';
+
+const html = await Astro.slots.render('default');
+
+const children = getSlotChildren(html);
 ---
 
 <div class="flex w-full gap-x-5">
   {
-    [1, 2, 3, 4].map(() => (
-      <div class="basis-1/4">
+    children.map((child) => (
+      <div class="flex grow basis-1">
         <TextBox>
-          <slot />
+          <Fragment set:html={child} />
         </TextBox>
       </div>
     ))
