@@ -1,19 +1,8 @@
 ---
-import { getCollection } from 'astro:content';
-
 import Layout from '../layouts/Layout.astro';
 import Grid from '../components/Grid.astro';
-import ProjectBox from '../components/ProjectBox.astro';
-import { getVariantByIndex } from '../services/getVariantByIndex';
 import Text from '../components/Text.astro';
-
-const TILE_COLOURS = ['green', 'yellow', 'blue', 'red'] as const;
-
-const projectsWithExamples = await getCollection('projects');
-
-const projects = projectsWithExamples.filter(
-  (project) => !project.id.startsWith('_'),
-);
+import ProjectList from '../components/ProjectList.astro';
 ---
 
 <Layout>
@@ -24,19 +13,6 @@ const projects = projectsWithExamples.filter(
       </div>
     </div>
 
-    <div class="flex flex-col gap-y-10 py-10">
-      {
-        projects.map((project, index) => (
-          <ProjectBox
-            href={`projects/${project.id}`}
-            title={project.data.title}
-            description={project.data.description}
-            tags={project.data.tags}
-            tagColour={getVariantByIndex(TILE_COLOURS, index)}
-            projectNumber={index + 1}
-          />
-        ))
-      }
-    </div>
+    <ProjectList />
   </Grid>
 </Layout>

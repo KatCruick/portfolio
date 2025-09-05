@@ -1,30 +1,19 @@
 ---
-import { getCollection } from 'astro:content';
-
 import Layout from '../layouts/Layout.astro';
-import ProjectBox from '../components/ProjectBox.astro';
+
 import Grid from '../components/Grid.astro';
 import IconButton from '../components/IconButton.astro';
 import Instagram from '../assets/icons/instagram.svg';
 import Linkedin from '../assets/icons/linkedin.svg';
 import Mail from '../assets/icons/mail.svg';
 import Person from '../assets/icons/person.svg';
-import { type Props as TileProps } from '../components/ProjectBox.astro';
-import { getVariantByIndex } from '../services/getVariantByIndex';
+
 import Hover from '../components/Hover.astro';
 import Text from '../components/Text.astro';
 import Picture from 'astro/components/Picture.astro';
 
 import heroImage from '../assets/images/kat.jpg';
-
-const TILE_COLOURS: TileProps['tagColour'][] = [
-  'green',
-  'yellow',
-  'blue',
-  'red',
-];
-
-const projects = await getCollection('projects');
+import ProjectList from '../components/ProjectList.astro';
 ---
 
 <Layout>
@@ -68,20 +57,7 @@ const projects = await getCollection('projects');
 
     <Hover />
 
-    <div class="flex flex-col gap-y-10 pt-10">
-      {
-        projects.map((project, index) => (
-          <ProjectBox
-            href={`project/${project.id}`}
-            title={project.data.title}
-            description={project.data.description}
-            tags={project.data.tags}
-            tagColour={getVariantByIndex(TILE_COLOURS, index)}
-            projectNumber={index + 1}
-          />
-        ))
-      }
-    </div>
+    <ProjectList />
 
     <div class="flex justify-center pt-20">
       <Text type="h2">Want to say hi?</Text>

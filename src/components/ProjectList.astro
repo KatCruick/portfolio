@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import ProjectBox from './ProjectBox.astro';
+import { getVariantByIndex } from '../services/getVariantByIndex';
+
+const TILE_COLOURS = ['green', 'yellow', 'blue', 'red'] as const;
+
+const projectsWithExamples = await getCollection('projects');
+
+const projects = projectsWithExamples.filter(
+  (project) => !project.id.startsWith('_'),
+);
+---
+
+<div class="flex flex-col gap-y-10 py-10">
+  {
+    projects.map((project, index) => (
+      <ProjectBox
+        href={`projects/${project.id}`}
+        title={project.data.title}
+        description={project.data.description}
+        tags={project.data.tags}
+        tagColour={getVariantByIndex(TILE_COLOURS, index)}
+        projectNumber={index + 1}
+      />
+    ))
+  }
+</div>
