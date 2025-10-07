@@ -79,4 +79,4 @@ This begs the question: if I want to publish the changes I've made on my laptop 
 
 On the face of it, "publishing" your changes means updating the remote copy of your website files (the ones in the cloud) with the local copy of your website files (the ones on your laptop).
 
-NOTE - draw a diagra to explain how the remote repo (Github) sits between collaborators and the server when the website is deployed.
+NOTE - draw a diagram to explain how the remote repo (Github) sits between collaborators and the server when the website is deployed.

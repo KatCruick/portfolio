@@ -1,0 +1,72 @@
+---
+import Text from '../Text.astro';
+
+import Arrow from '../../assets/icons/dropdownArrow.svg';
+---
+
+<div class="flex grow flex-col border-1">
+  <div class="cursor-pointer px-10 py-4" data-collapsible>
+    <div class="flex justify-between">
+      <div
+        data-collapsible-header
+        class="transition-all duration-300 ease-in-out"
+      >
+        <Text type="body"> Tell me more </Text>
+      </div>
+      <div
+        data-collapsible-arrow
+        class="rotate-180 transition-all delay-300 duration-0"
+      >
+        <Arrow />
+      </div>
+    </div>
+  </div>
+  <div
+    data-collapsible-content
+    class="overflow-hidden transition-all duration-300 ease-in-out"
+    style="max-height: 0px;"
+  >
+    <div class="px-10 pb-4">
+      <slot />
+    </div>
+  </div>
+</div>
+
+<script>
+  // https://webreaper.dev/posts/astro-accessible-accordion/
+  function addCollapsibleListener() {
+    const collapsible = document.querySelector('[data-collapsible]');
+
+    console.log({ collapsible });
+
+    if (!collapsible) {
+      return;
+    }
+
+    const header = document.querySelector('[data-collapsible-header]');
+    const content = document.querySelector<HTMLDivElement>(
+      '[data-collapsible-content]',
+    );
+    const arrow = document.querySelector('[data-collapsible-arrow]');
+
+    if (!(content && header && arrow)) {
+      return;
+    }
+
+    collapsible?.addEventListener('click', () => {
+      const maxHeight = content.style.maxHeight;
+
+      if (maxHeight && maxHeight !== '0px') {
+        content.style.maxHeight = '0px';
+      } else {
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+
+      header.classList.toggle('invisible');
+      header.classList.toggle('opacity-0');
+      arrow.classList.toggle('rotate-180');
+    });
+  }
+
+  addCollapsibleListener();
+</script>
