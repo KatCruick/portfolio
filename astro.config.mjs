@@ -14,7 +14,7 @@ export default defineConfig({
   },
 
   server: {
-    allowedHosts: ['.localhost', '.affablegecko.net'],
+    allowedHosts: ['.localhost', '.affablegecko.net', '.ngrok-free.app'],
   },
 
   adapter: vercel(),
