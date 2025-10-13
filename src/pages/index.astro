@@ -31,56 +31,67 @@ import ProjectList from '../components/ProjectList.astro';
       </div>
     </div>
 
-    <div class="w-[630px] pb-[104px]">
-      <div>
-        <span class="flex items-baseline">
-          <Text type="sh3"> I am a&nbsp; </Text>
-          <Text type="sh1"> UX designer and researcher </Text>
-        </span>
+    <div class="lg:hidden">
+      <div class="flex h-80">
+        <Text type="sh3"> Mobile designs coming soon... </Text>
       </div>
-      <Text type="sh3"> creating in London, United Kingdom. </Text>
     </div>
 
-    <div class="relative pb-10">
-      <Picture
-        src={heroImage}
-        formats={['avif', 'webp']}
-        alt="A description of my image."
-        layout="full-width"
-        fit="cover"
-      />
+    <div class="hidden lg:block">
+      <div class="w-[630px] pb-[104px]">
+        <div>
+          <span class="flex items-baseline">
+            <Text type="sh3"> I am a&nbsp; </Text>
+            <Text type="sh1"> UX designer and researcher </Text>
+          </span>
+        </div>
+        <Text type="sh3"> creating in London, United Kingdom. </Text>
+      </div>
+
+      <div class="relative pb-10">
+        <Picture
+          src={heroImage}
+          formats={['avif', 'webp']}
+          alt="A description of my image."
+          layout="full-width"
+          fit="cover"
+        />
+      </div>
+
+      <div class="flex w-full justify-center">
+        <Text type="h2">Projects</Text>
+      </div>
+
+      <Hover />
+
+      <ProjectList />
+
+      <div class="flex justify-center pt-20">
+        <Text type="h2">Want to say hi?</Text>
+      </div>
+
+      <div class="flex justify-center gap-x-[120px] pt-10">
+        <IconButton
+          href="https://www.linkedin.com/in/katcruickshank/"
+          colour="green"
+        >
+          <Linkedin />
+        </IconButton>
+        <IconButton href="mailto:katrinaicruickshank@gmail.com">
+          <Mail />
+        </IconButton>
+        <IconButton href="" colour="blue">
+          <Person />
+        </IconButton>
+        <IconButton
+          href="https://www.instagram.com/_whatkatmakes/"
+          colour="red"
+        >
+          <Instagram />
+        </IconButton>
+      </div>
+
+      <div class="h-screen"></div>
     </div>
-
-    <div class="flex w-full justify-center">
-      <Text type="h2">Projects</Text>
-    </div>
-
-    <Hover />
-
-    <ProjectList />
-
-    <div class="flex justify-center pt-20">
-      <Text type="h2">Want to say hi?</Text>
-    </div>
-
-    <div class="flex justify-center gap-x-[120px] pt-10">
-      <IconButton
-        href="https://www.linkedin.com/in/katcruickshank/"
-        colour="green"
-      >
-        <Linkedin />
-      </IconButton>
-      <IconButton href="mailto:katrinaicruickshank@gmail.com">
-        <Mail />
-      </IconButton>
-      <IconButton href="" colour="blue">
-        <Person />
-      </IconButton>
-      <IconButton href="https://www.instagram.com/_whatkatmakes/" colour="red">
-        <Instagram />
-      </IconButton>
-    </div>
-
-    <div class="h-screen"></div>
   </Grid>
 </Layout>
