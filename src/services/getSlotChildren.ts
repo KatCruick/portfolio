@@ -1,5 +1,8 @@
 import { parseHTML } from 'linkedom';
 
+/**
+ * https://cassidysmith.dev/posts/modify-astro-slot-children
+ */
 export const getSlotChildren = (html: string): string[] => {
   const { document } = parseHTML(`<div>${html}</div>`);
 

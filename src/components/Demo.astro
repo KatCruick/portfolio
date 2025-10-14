@@ -1,0 +1,93 @@
+---
+import { getSlotChildren } from '../services/getSlotChildren';
+
+import Arrow from '../assets/icons/dropdownArrow.svg';
+
+const html = await Astro.slots.render('default');
+
+const children = getSlotChildren(html);
+---
+
+<div class="embla relative overflow-hidden">
+  <div class="embla__viewport">
+    <div class="embla__container flex gap-x-4">
+      {
+        children.map((child) => (
+          <div class="embla__slide shrink-0 grow-0 basis-full cursor-grab *:active:cursor-grabbing">
+            <Fragment set:html={child} />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+  <div class="absolute top-0 flex w-full justify-end p-2">
+    <button
+      class="embla__prev rotate-30 cursor-pointer disabled:cursor-not-allowed disabled:fill-gray-300"
+      disabled
+    >
+      <Arrow />
+    </button>
+    <button
+      class="embla__next rotate-90 cursor-pointer disabled:cursor-not-allowed disabled:fill-gray-300"
+    >
+      <Arrow />
+    </button>
+  </div>
+</div>
+
+<script>
+  import EmblaCarousel from 'embla-carousel';
+
+  // https://www.embla-carousel.com/guides/previous-and-next-buttons/
+  function initEmbla() {
+    // Grab wrapper nodes
+    const rootNode = document.querySelector('.embla');
+
+    if (!(rootNode instanceof HTMLElement)) {
+      return;
+    }
+
+    // Grab viewport node
+    const viewportNode = rootNode?.querySelector('.embla__viewport');
+
+    // Grab button nodes
+    const prevButtonNode = rootNode?.querySelector('.embla__prev');
+    const nextButtonNode = rootNode?.querySelector('.embla__next');
+
+    if (
+      !(
+        prevButtonNode instanceof HTMLButtonElement &&
+        nextButtonNode instanceof HTMLElement
+      )
+    ) {
+      return;
+    }
+
+    if (!(viewportNode instanceof HTMLElement)) {
+      return;
+    }
+
+    const options = {};
+    const embla = EmblaCarousel(viewportNode, options);
+
+    // Add click listeners
+    prevButtonNode.addEventListener('click', embla.scrollPrev, false);
+    nextButtonNode.addEventListener('click', embla.scrollNext, false);
+
+    embla.on('select', (api) => {
+      if (api.canScrollNext()) {
+        nextButtonNode.removeAttribute('disabled');
+      } else {
+        nextButtonNode.setAttribute('disabled', 'disabled');
+      }
+
+      if (api.canScrollPrev()) {
+        prevButtonNode.removeAttribute('disabled');
+      } else {
+        prevButtonNode.setAttribute('disabled', 'disabled');
+      }
+    });
+  }
+
+  initEmbla();
+</script>
