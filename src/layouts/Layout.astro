@@ -4,6 +4,7 @@ import '../styles/global.css';
 import '@fontsource-variable/dm-sans';
 
 import Navbar from '../components/navbar/Navbar.astro';
+// import { ClientRouter } from 'astro:transitions';
 ---
 
 <html lang="en">
@@ -14,7 +15,8 @@ import Navbar from '../components/navbar/Navbar.astro';
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
   </head>
-  <body>
+  <!-- <ClientRouter /> -->
+  <body transition:animate="slide">
     <Navbar />
     <div class="h-[140px]"></div>
     <div class="overflow-x-hidden">

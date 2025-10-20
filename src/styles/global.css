@@ -101,24 +101,78 @@
   @apply font-sans text-[18px] leading-[24px] font-normal;
 }
 
+/*
+Check out Ty
+
+https://github.com/tailwindlabs/tailwindcss-typography/blob/main/src/styles.js
+*/
 .prose {
-  h1 {
+  /* * {
+    @apply pb-10;
+  } */
+
+  > p {
+    @apply type-body mt-10;
+  }
+
+  p + p {
+    @apply mt-[1lh];
+  }
+
+  > h1 {
     @apply type-h1;
   }
 
-  h2 {
-    @apply type-h2 text-center;
+  > h2 {
+    @apply type-h2 mt-[120px] mb-10 text-center;
   }
 
-  h3 {
-    @apply type-h3;
+  > h3 {
+    @apply type-h3 mt-20 mb-10;
   }
 
-  h4 {
+  > h4 {
     @apply type-sh1;
   }
 
-  p {
-    @apply type-body;
+  /* All first-level child divs */
+  > div {
+    @apply mt-10;
   }
+
+  /* Selector for images from Markdown/Content collections */
+  > p:has(img) {
+    @apply flex justify-center;
+  }
+
+  > h2 + * {
+    @apply mt-0;
+  }
+
+  > h3 + * {
+    @apply mt-0;
+  }
+
+  > h4 + * {
+    @apply mt-0;
+  }
+
+  /* At the top of the doc */
+  > :first-child {
+    @apply mt-0;
+  }
+
+  /* At the bottom of the doc */
+  > :last-child {
+    @apply mb-0;
+  }
+}
+
+@view-transition {
+  /* navigation: auto; */
+  /* push: auto; */
+}
+
+.vt {
+  view-transition-name: slide;
 }

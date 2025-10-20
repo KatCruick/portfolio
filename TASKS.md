@@ -1,5 +1,7 @@
 # Tasks
 
+- [ ] Fix the fact that you can't currently have more than one collapsible section working per page
+
 - [ ] Get deploy workflow working
 
   We can't use Vercel's deploy hooks to deploy the website, as Vercel will not automatically deploy commits from a git author who is not the owner of the Vercel project. Instead we need to set up a GitHub Action that will trigger a new deploy on Vercel whenever a commit is pushed to the `main` branch.
@@ -10,23 +12,6 @@
 
   - [Blog post outlining workarounds for deploy hooks](https://blog.saif71.com/fix-vercel-git-error/)
   - [Vercel docs on deploying with GitHub Actions](https://vercel.com/guides/how-can-i-use-github-actions-with-vercel)
-
-- [ ] Build a carousel component
-
-- [ ] Typography
-
-  Need to work out how I'm organising typography. Is it
-
-  - Individual Astro components for each text style (e.g. HeadingOne, HeadingTwo, Body)
-  - A single Text component that accepts a "variant" prop
-  - Purely CSS based?
-
-  CSS based might be nice. I got stuck with the former approach when trying to do list elements.
-
-  Define individual type elements with Tailwinds @utility
-
-  - Create a `.prose` selector and style each type element with @apply for the new utilities
-  - Define a standalone <Typography /> component, where you pass in a key and it renders the correct typographic elements with the correct utility applied
 
 - [ ] Build the tooltip for the project list component
 
@@ -55,3 +40,20 @@
   ```
 
   However, this isn't particularly user friendly. An alternative might be to have a separate Markdown file for each block, and specify the block type and image in the frontmatter. Projects then could be a directory containing a number of content markdown files.
+
+- [x] Typography
+
+  Need to work out how I'm organising typography. Is it
+
+  - Individual Astro components for each text style (e.g. HeadingOne, HeadingTwo, Body)
+  - A single Text component that accepts a "variant" prop
+  - Purely CSS based?
+
+  CSS based might be nice. I got stuck with the former approach when trying to do list elements.
+
+  Define individual type elements with Tailwinds @utility
+
+  - Create a `.prose` selector and style each type element with @apply for the new utilities
+  - Define a standalone <Typography /> component, where you pass in a key and it renders the correct typographic elements with the correct utility applied
+
+- [x] Build a carousel component
