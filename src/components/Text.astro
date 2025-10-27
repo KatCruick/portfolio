@@ -1,4 +1,5 @@
 ---
+import type { AstroBuiltinAttributes } from 'astro';
 import type { HTMLTag } from 'astro/types';
 
 type ElementProps = {
@@ -20,13 +21,13 @@ const TYPOGRAPHIC_ELEMENT_MAP = {
 
 type Props = {
   type: keyof typeof TYPOGRAPHIC_ELEMENT_MAP;
-};
+} & AstroBuiltinAttributes;
 
-const { type } = Astro.props;
+const { type, ...directives } = Astro.props;
 
 const { tag: Element, classNames } = TYPOGRAPHIC_ELEMENT_MAP[type];
 ---
 
-<Element class={classNames}>
+<Element class={classNames} {...directives}>
   <slot />
 </Element>

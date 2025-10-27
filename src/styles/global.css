@@ -167,12 +167,3 @@ https://github.com/tailwindlabs/tailwindcss-typography/blob/main/src/styles.js
     @apply mb-0;
   }
 }
-
-@view-transition {
-  /* navigation: auto; */
-  /* push: auto; */
-}
-
-.vt {
-  view-transition-name: slide;
-}

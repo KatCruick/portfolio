@@ -18,15 +18,17 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 
 const { Content } = await render(project);
+
+const { title, description, tags } = project.data;
 ---
 
 <Layout>
   <Grid>
     <div>
-      <Text type="h1">{project.data.title}</Text>
-      <Text type="h4">{project.data.description}</Text>
+      <Text type="h1" transition:name={`project-title-${title}`}>{title}</Text>
+      <Text type="h4">{description}</Text>
       <div class="flex gap-x-8 pt-2">
-        {project.data.tags?.map((tag) => <Tag colour="green">{tag}</Tag>)}
+        {tags?.map((tag) => <Tag colour="green">{tag}</Tag>)}
       </div>
 
       <div class="prose flex flex-col py-20">

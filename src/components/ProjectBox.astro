@@ -27,7 +27,7 @@ const { title, tagColour, description, projectNumber, href, tags } =
   </div>
 
   <div class="flex flex-col">
-    <Text type="sh1">{title}</Text>
+    <Text type="sh1" transition:name={`project-title-${title}`}>{title}</Text>
 
     <div class="flex gap-x-8 pt-2">
       {tags?.map((tag) => <Tag colour={tagColour}>{tag}</Tag>)}
