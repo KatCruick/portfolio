@@ -2,8 +2,7 @@
 import { getCollection } from 'astro:content';
 import ProjectBox from './ProjectBox.astro';
 import { getVariantByIndex } from '../services/getVariantByIndex';
-
-const TILE_COLOURS = ['green', 'yellow', 'blue', 'red'] as const;
+import { TILE_COLOURS } from '../services/constants';
 
 const projectsWithExamples = await getCollection('projects');
 

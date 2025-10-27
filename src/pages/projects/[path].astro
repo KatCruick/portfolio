@@ -5,17 +5,19 @@ import Grid from '../../components/Grid.astro';
 import Layout from '../../layouts/Layout.astro';
 import Text from '../../components/Text.astro';
 import Tag from '../../components/Tag.astro';
+import { getVariantByIndex } from '../../services/getVariantByIndex';
+import { TILE_COLOURS } from '../../services/constants';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
 
-  return projects.map((project) => ({
+  return projects.map((project, index) => ({
     params: { path: project.id },
-    props: { project },
+    props: { project, projectNumber: index },
   }));
 }
 
-const { project } = Astro.props;
+const { project, projectNumber } = Astro.props;
 
 const { Content } = await render(project);
 
@@ -28,7 +30,13 @@ const { title, description, tags } = project.data;
       <Text type="h1" transition:name={`project-title-${title}`}>{title}</Text>
       <Text type="h4">{description}</Text>
       <div class="flex gap-x-8 pt-2">
-        {tags?.map((tag) => <Tag colour="green">{tag}</Tag>)}
+        {
+          tags?.map((tag) => (
+            <Tag colour={getVariantByIndex(TILE_COLOURS, projectNumber)}>
+              {tag}
+            </Tag>
+          ))
+        }
       </div>
 
       <div class="prose flex flex-col py-20">
