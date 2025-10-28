@@ -132,7 +132,7 @@ https://github.com/tailwindlabs/tailwindcss-typography/blob/main/src/styles.js
   }
 
   > h4 {
-    @apply type-sh1;
+    @apply type-sh1 mt-20 mb-10;
   }
 
   /* All first-level child divs */

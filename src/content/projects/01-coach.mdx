@@ -15,6 +15,11 @@ import SectionTextLeft from '../../components/project/SectionTextLeft.astro';
 import SectionTextFullWidth from '../../components/project/SectionTextFullWidth.astro';
 import SectionTextBoxes from '../../components/project/SectionTextBoxes.astro';
 import SectionCollapsible from '../../components/project/SectionCollapsible.astro';
+import SectionDownloadButton from '../../components/project/SectionDownloadButton.astro';
+
+![Image](../../assets/01-coach/hero.png)
+
+### Overview
 
 ## Background
 
@@ -30,7 +35,7 @@ The project followed a modified version of the Stanford Design Thinking Process,
 
 ### What's the problem?
 
-<SectionTextLeft image={ProjectProblemImage}>
+<SectionTextLeft image={ProjectProblemImage} imageAlt='A description of my image.' imageHeight={360}>
 
 Health and fitness applications typically employ persuasive strategies to encourage the formation of healthy habits. Although persuasive strategies contribute to healthy behaviours, it is unclear what persuasive strategies are most appropriate for fitness applications aimed at helping users to schedule and record their physical activity, with the goal of changing or maintaining fitness behaviours. Further, the usability and user experience of applications that employ particular persuasive strategies is unknown.
 
@@ -76,6 +81,12 @@ The Test stage with usability testing was included instead of a valence test or 
 
 ### Literature Review
 
+<SectionDownloadButton fileName="coach-literature-review.pdf" >
+
+Download literature review
+
+</SectionDownloadButton>
+
 ## Methodology
 
 <SectionTextFullWidth>
@@ -110,3 +121,29 @@ The Test stage with usability testing was included instead of a valence test or 
 ### Resources
 
 #### Participants
+
+<SectionTextFullWidth></SectionTextFullWidth>
+
+#### Design and Experimental Principles
+
+<SectionTextFullWidth>
+
+To decide what persuasive strategies to employ and how, the work of Harjumaa and Oinas-Kukkonen and Abraham and Michie was consulted.11, 12 The mobile prototype was designed according to accessibility principles and following design principles for mobile, specifically the Apple platform.13-16
+
+The Persuasive Feature Preference Questionnaire distributed prior to user interviews and following usability testing was formulated with reference to persuasive strategies defined by Abraham and Michie.12 The reporting of the usability test followed the Common Industry Format (CIF). This included a System Usability Scale (SUS) to evaluate and compare the usability of the versions of the high-fidelity prototype.17 In addition to the standard CIF metrics of task success, assists, errors, and time on task, additional methods were included to assess and compare user experience of the high-fidelity prototype. These included a Post-Task Questionnaire to provide further insight into user experience and perceived efficacy of persuasive strategies included in the design.18, 19
+
+</SectionTextFullWidth>
+
+### Ethics
+
+Ethical issues, including professional conduct, privacy and security, relevant legislation, and societal impact were considered from project proposal through to completion as required by the British Computer Society. Overall, the project presented limited ethical concerns, and in instances where there was a potential for ethical issues, these were addressed.
+
+<SectionCollapsible>
+
+Research has shown that most behavioural change applications include multiple persuasive strategies and that there is a limited understanding of what strategies are most effective in what contexts. Accordingly, behavioural change techniques included in the Coach prototype were tested for usability, user experience, and perception of efficacy to determine which ones were worth bringing forward into the second iteration of the application. Additionally, the A/B test component of the usability test compared three persuasive strategies for encouraging scheduling of physical activity. The goal was to identify the strategy that users perceived as most effective in encouraging scheduling, with the understanding that scheduling contributes to higher follow-through.
+
+The Test stage with usability testing was included instead of a valence test or five-act interview which are classically employed in the Test stage of the Stanford Design Thinking Process as it was critical to go beyond users rate of satisfaction or dissatisfaction with particular features across the application, and instead focus on the usability and perceived efficacy of persuasive features. The justification for this decision, is that just because a user rates being satisfied with a feature, does not mean that they think the feature would contribute to increase scheduling or uptake of physical activity.
+
+</SectionCollapsible>
+
+#### Accessibility

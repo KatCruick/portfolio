@@ -1,0 +1,16 @@
+---
+import DownloadButton from '../DownloadButton.astro';
+
+type Props = {
+  href: string;
+  fileName: string;
+};
+
+const { href, fileName } = Astro.props;
+---
+
+<div class="mx-auto w-[605px]">
+  <DownloadButton href={href} fileName={fileName}>
+    <slot />
+  </DownloadButton>
+</div>

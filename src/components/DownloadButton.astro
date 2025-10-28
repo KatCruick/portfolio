@@ -1,0 +1,26 @@
+---
+import Text from './Text.astro';
+
+// https://gomakethings.com/how-to-force-a-file-to-download-instead-of-open-in-the-browser-using-only-html/
+
+type Props = {
+  href: string;
+  fileName: string;
+};
+
+const FALLBACK_HREF = 'https://arxiv.org/pdf/2506.02153';
+
+const { href = FALLBACK_HREF, fileName } = Astro.props;
+---
+
+<a href={href} download={fileName}>
+  <div class="bg-black">
+    <div
+      class="flex -translate-1.5 cursor-pointer items-center justify-center border-1 border-black bg-white py-3 duration-75 ease-in-out active:translate-0"
+    >
+      <Text type="body">
+        <slot />
+      </Text>
+    </div>
+  </div>
+</a>

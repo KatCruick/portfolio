@@ -34,39 +34,41 @@ import Arrow from '../../assets/icons/dropdownArrow.svg';
 
 <script>
   // https://webreaper.dev/posts/astro-accessible-accordion/
-  function addCollapsibleListener() {
-    const collapsible = document.querySelector('[data-collapsible]');
+  function addCollapsibleListeners() {
+    const collapsibleElements = document.querySelectorAll('[data-collapsible]');
 
-    console.log({ collapsible });
+    collapsibleElements.forEach((collapsible) => {
+      const { parentElement } = collapsible;
 
-    if (!collapsible) {
-      return;
-    }
-
-    const header = document.querySelector('[data-collapsible-header]');
-    const content = document.querySelector<HTMLDivElement>(
-      '[data-collapsible-content]',
-    );
-    const arrow = document.querySelector('[data-collapsible-arrow]');
-
-    if (!(content && header && arrow)) {
-      return;
-    }
-
-    collapsible?.addEventListener('click', () => {
-      const maxHeight = content.style.maxHeight;
-
-      if (maxHeight && maxHeight !== '0px') {
-        content.style.maxHeight = '0px';
-      } else {
-        content.style.maxHeight = content.scrollHeight + 'px';
+      if (!parentElement) {
+        return;
       }
 
-      header.classList.toggle('invisible');
-      header.classList.toggle('opacity-0');
-      arrow.classList.toggle('rotate-180');
+      const header = parentElement.querySelector('[data-collapsible-header]');
+      const content = parentElement.querySelector<HTMLDivElement>(
+        '[data-collapsible-content]',
+      );
+      const arrow = parentElement.querySelector('[data-collapsible-arrow]');
+
+      if (!(content && header && arrow)) {
+        return;
+      }
+
+      collapsible?.addEventListener('click', () => {
+        const maxHeight = content.style.maxHeight;
+
+        if (maxHeight && maxHeight !== '0px') {
+          content.style.maxHeight = '0px';
+        } else {
+          content.style.maxHeight = content.scrollHeight + 'px';
+        }
+
+        header.classList.toggle('invisible');
+        header.classList.toggle('opacity-0');
+        arrow.classList.toggle('rotate-180');
+      });
     });
   }
 
-  addCollapsibleListener();
+  addCollapsibleListeners();
 </script>
