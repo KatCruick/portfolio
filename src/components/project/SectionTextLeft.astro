@@ -12,7 +12,7 @@ type Props = {
   imageHeight?: number;
 };
 
-const { image = fallbackImage, imageAlt, imageHeight = 400 } = Astro.props;
+const { image = fallbackImage, imageAlt = '', imageHeight = 400 } = Astro.props;
 ---
 
 <div class="flex w-full items-stretch gap-x-5">
