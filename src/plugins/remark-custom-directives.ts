@@ -1,195 +1,172 @@
+// import { type Root } from 'mdast';
+import { type ContainerDirective } from 'mdast-util-directive';
+
 import { visit } from 'unist-util-visit';
 
+/**
+ * Helper to check if a value looks like an image path
+ */
+const isImagePath = (value: string | undefined): boolean => {
+  if (typeof value !== 'string') {
+    return false;
+  }
+
+  return /\.(png|jpg|jpeg|gif|svg|webp|avif)$/i.test(value);
+};
+
+/**
+ * Remark plugin to transform custom directives into MDX JSX components.
+ *
+ * This plugin transforms container directives (:::directive-name) into MDX JSX elements
+ * that can be mapped to Astro components via the `components` prop in MDX.
+ *
+ * The plugin handles:
+ * - Converting directives to MDX JSX elements
+ * - Importing image assets for image-type attributes
+ * - Passing image imports as JSX expression attributes
+ * - Converting numeric string attributes to actual numbers
+ */
 export function remarkCustomDirectives() {
-  return (tree) => {
-    const imports = new Set();
-    const imageImports = new Map(); // Track image path -> variable name
+  return (tree: Root) => {
+    const imageImports = new Map<string, string>();
     let imageCounter = 0;
 
-    // Helper to generate unique image variable name
-    function getImageVariableName(imagePath) {
+    /**
+     * Generate a unique variable name for an image import
+     */
+    const getImageVariableName = (imagePath: string): string => {
       if (imageImports.has(imagePath)) {
-        return imageImports.get(imagePath);
+        return imageImports.get(imagePath)!;
       }
 
       // Create a safe variable name from the file path
       const baseName = imagePath
         .split('/')
-        .pop()
+        .pop()!
         .replace(/[^a-zA-Z0-9]/g, '_')
         .replace(/^(\d)/, '_$1'); // Ensure it doesn't start with a number
 
       const varName = `__img_${baseName}_${imageCounter++}__`;
       imageImports.set(imagePath, varName);
       return varName;
-    }
-
-    // Helper to check if a value looks like an image path
-    function isImagePath(value) {
-      if (typeof value !== 'string') return false;
-      return /\.(png|jpg|jpeg|gif|svg|webp|avif)$/i.test(value);
-    }
+    };
 
     visit(tree, (node) => {
       if (node.type === 'containerDirective') {
-        if (node.name === 'full-width') {
-          imports.add('SectionTextFullWidth');
+        const containerNode = node as ContainerDirective;
+        const attributes = containerNode.attributes || {};
 
-          // Transform to MDX JSX element
-          node.type = 'mdxJsxFlowElement';
-          node.name = 'SectionTextFullWidth';
-          node.attributes = [];
-        }
+        // Transform to MDX JSX element
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const jsxNode = node as any;
+        jsxNode.type = 'mdxJsxFlowElement';
+        jsxNode.name = containerNode.name;
+        jsxNode.attributes = [];
 
-        if (node.name === 'text-left') {
-          imports.add('SectionTextLeft');
+        // Process attributes
+        Object.entries(attributes).forEach(([key, value]) => {
+          if (typeof value !== 'string') {
+            jsxNode.attributes.push({
+              type: 'mdxJsxAttribute',
+              name: key,
+              value: value,
+            });
+            return;
+          }
 
-          // Transform to MDX JSX element with props
-          node.type = 'mdxJsxFlowElement';
-          node.name = 'SectionTextLeft';
+          // Handle image paths - create an import and add as JSX expression
+          if (isImagePath(value)) {
+            const varName = getImageVariableName(value);
 
-          // Convert directive attributes to JSX attributes
-          const attrs = node.attributes || {};
-          node.attributes = [];
-
-          // Handle each attribute
-          Object.keys(attrs).forEach((key) => {
-            const value = attrs[key];
-
-            // Check if this is an image path
-            if (isImagePath(value)) {
-              const varName = getImageVariableName(value);
-
-              // Add JSX attribute with variable reference
-              node.attributes.push({
-                type: 'mdxJsxAttribute',
-                name: key,
-                value: {
-                  type: 'mdxJsxAttributeValueExpression',
-                  value: varName,
-                  data: {
-                    estree: {
-                      type: 'Program',
-                      sourceType: 'module',
-                      body: [
-                        {
-                          type: 'ExpressionStatement',
-                          expression: {
-                            type: 'Identifier',
-                            name: varName,
-                          },
+            // Add JSX expression attribute that references the imported image
+            jsxNode.attributes.push({
+              type: 'mdxJsxAttribute',
+              name: key,
+              value: {
+                type: 'mdxJsxAttributeValueExpression',
+                value: varName,
+                data: {
+                  estree: {
+                    type: 'Program',
+                    sourceType: 'module',
+                    body: [
+                      {
+                        type: 'ExpressionStatement',
+                        expression: {
+                          type: 'Identifier',
+                          name: varName,
                         },
-                      ],
-                    },
+                      },
+                    ],
                   },
                 },
-              });
-            }
-            // Handle numbers
-            else if (!isNaN(value) && value !== '') {
-              node.attributes.push({
-                type: 'mdxJsxAttribute',
-                name: key,
-                value: {
-                  type: 'mdxJsxAttributeValueExpression',
-                  value: value,
-                  data: {
-                    estree: {
-                      type: 'Program',
-                      sourceType: 'module',
-                      body: [
-                        {
-                          type: 'ExpressionStatement',
-                          expression: {
-                            type: 'Literal',
-                            value: parseFloat(value),
-                          },
+              },
+            });
+          }
+          // Handle numeric values
+          else if (!isNaN(Number(value)) && value !== '') {
+            jsxNode.attributes.push({
+              type: 'mdxJsxAttribute',
+              name: key,
+              value: {
+                type: 'mdxJsxAttributeValueExpression',
+                value: String(value),
+                data: {
+                  estree: {
+                    type: 'Program',
+                    sourceType: 'module',
+                    body: [
+                      {
+                        type: 'ExpressionStatement',
+                        expression: {
+                          type: 'Literal',
+                          value: parseFloat(value),
                         },
-                      ],
-                    },
+                      },
+                    ],
                   },
                 },
-              });
-            }
-            // Handle strings
-            else {
-              node.attributes.push({
-                type: 'mdxJsxAttribute',
-                name: key,
-                value: value,
-              });
-            }
-          });
-        }
+              },
+            });
+          }
+          // Handle string values
+          else {
+            jsxNode.attributes.push({
+              type: 'mdxJsxAttribute',
+              name: key,
+              value: value,
+            });
+          }
+        });
       }
     });
 
-    // Collect all import statements
-    const allImports = [];
-
-    // Add component imports
-    if (imports.size > 0) {
-      allImports.push(
-        Array.from(imports)
-          .map(
-            (name) =>
-              `import ${name} from '../../components/project/${name}.astro';`,
-          )
-          .join('\n'),
-      );
-    }
-
-    // Add image imports
+    // Add image imports at the top of the file
     if (imageImports.size > 0) {
-      allImports.push(
-        Array.from(imageImports.entries())
-          .map(([path, varName]) => `import ${varName} from '${path}';`)
-          .join('\n'),
-      );
-    }
-
-    // Add all imports at the top
-    if (allImports.length > 0) {
-      const importStatements = [];
-      const estreeBody = [];
-
-      // Component imports
-      imports.forEach((name) => {
-        estreeBody.push({
-          type: 'ImportDeclaration',
+      const estreeBody = Array.from(imageImports.entries()).map(
+        ([path, varName]) => ({
+          type: 'ImportDeclaration' as const,
           specifiers: [
             {
-              type: 'ImportDefaultSpecifier',
-              local: { type: 'Identifier', name },
+              type: 'ImportDefaultSpecifier' as const,
+              local: { type: 'Identifier' as const, name: varName },
             },
           ],
           source: {
-            type: 'Literal',
-            value: `../../components/project/${name}.astro`,
-          },
-        });
-      });
-
-      // Image imports
-      imageImports.forEach((varName, path) => {
-        estreeBody.push({
-          type: 'ImportDeclaration',
-          specifiers: [
-            {
-              type: 'ImportDefaultSpecifier',
-              local: { type: 'Identifier', name: varName },
-            },
-          ],
-          source: {
-            type: 'Literal',
+            type: 'Literal' as const,
             value: path,
           },
-        });
-      });
+        }),
+      );
 
-      tree.children.unshift({
+      const importStatements = Array.from(imageImports.entries())
+        .map(([path, varName]) => `import ${varName} from '${path}';`)
+        .join('\n');
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (tree.children as any[]).unshift({
         type: 'mdxjsEsm',
-        value: allImports.join('\n'),
+        value: importStatements,
         data: {
           estree: {
             type: 'Program',
