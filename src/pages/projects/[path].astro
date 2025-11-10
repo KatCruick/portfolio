@@ -1,5 +1,5 @@
 ---
-import { render, getCollection } from 'astro:content';
+import { render } from 'astro:content';
 
 import Grid from '../../components/Grid.astro';
 import Layout from '../../layouts/Layout.astro';
@@ -7,9 +7,10 @@ import Text from '../../components/Text.astro';
 import Tag from '../../components/Tag.astro';
 import { getVariantByIndex } from '../../services/getVariantByIndex';
 import { TILE_COLOURS } from '../../services/constants';
+import { getProjectCollection } from '../../services/getProjectCollection';
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects');
+  const projects = await getProjectCollection();
 
   return projects.map((project, index) => ({
     params: { path: project.id },

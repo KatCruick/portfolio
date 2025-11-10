@@ -1,10 +1,10 @@
 ---
-import { getCollection } from 'astro:content';
 import ProjectBox from './ProjectBox.astro';
 import { getVariantByIndex } from '../services/getVariantByIndex';
 import { TILE_COLOURS } from '../services/constants';
+import { getProjectCollection } from '../services/getProjectCollection';
 
-const projectsWithExamples = await getCollection('projects');
+const projectsWithExamples = await getProjectCollection();
 
 const projects = projectsWithExamples.filter(
   (project) => !project.id.startsWith('_'),
