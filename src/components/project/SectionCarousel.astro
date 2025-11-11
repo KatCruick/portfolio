@@ -1,0 +1,21 @@
+---
+import TextBox from './TextBox.astro';
+import { getSlotChildren } from '../../services/getSlotChildren';
+import Demo from '../Demo.astro';
+
+const html = await Astro.slots.render('default');
+
+const children = getSlotChildren(html);
+---
+
+<Demo>
+  {
+    children.map((child) => (
+      <div class="flex grow basis-1">
+        <TextBox>
+          <Fragment set:html={child} />
+        </TextBox>
+      </div>
+    ))
+  }
+</Demo>
