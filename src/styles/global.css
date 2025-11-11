@@ -119,19 +119,19 @@ https://github.com/tailwindlabs/tailwindcss-typography/blob/main/src/styles.js
     @apply mt-[1lh];
   }
 
-  > h1 {
+  h1 {
     @apply type-h1;
   }
 
-  > h2 {
+  h2 {
     @apply type-h2 mt-[120px] mb-10 text-center;
   }
 
-  > h3 {
+  h3 {
     @apply type-h3 mt-20 mb-10;
   }
 
-  > h4 {
+  h4 {
     @apply type-sh1 mt-20 mb-10;
   }
 
@@ -141,19 +141,19 @@ https://github.com/tailwindlabs/tailwindcss-typography/blob/main/src/styles.js
   }
 
   /* Selector for images from Markdown/Content collections */
-  > p:has(img) {
+  p:has(img) {
     @apply flex justify-center;
   }
 
-  > h2 + * {
+  h2 + * {
     @apply mt-0;
   }
 
-  > h3 + * {
+  h3 + * {
     @apply mt-0;
   }
 
-  > h4 + * {
+  h4 + * {
     @apply mt-0;
   }
 
