@@ -6,9 +6,7 @@ import { getProjectCollection } from '../services/getProjectCollection';
 
 const projectsWithExamples = await getProjectCollection();
 
-const projects = projectsWithExamples.filter(
-  (project) => !project.id.startsWith('_'),
-);
+const projects = projectsWithExamples.filter((project) => !project.data.hidden);
 ---
 
 <div class="flex flex-col gap-y-10 py-10">

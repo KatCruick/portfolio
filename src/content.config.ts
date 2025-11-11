@@ -9,6 +9,7 @@ export const ProjectSchema = z.object({
   description: z.string(),
   image: z.string().optional(),
   tags: z.array(z.string()).optional(),
+  hidden: z.boolean(),
 });
 
 const projects = defineCollection({
