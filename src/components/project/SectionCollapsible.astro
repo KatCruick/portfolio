@@ -1,10 +1,9 @@
 ---
 import Text from '../Text.astro';
-
 import Arrow from '../../assets/icons/dropdownArrow.svg';
 ---
 
-<div class="flex grow flex-col border-1">
+<div class="flex grow flex-col border-2">
   <div class="cursor-pointer px-10 py-4" data-collapsible>
     <div class="flex justify-between">
       <div
@@ -70,5 +69,9 @@ import Arrow from '../../assets/icons/dropdownArrow.svg';
     });
   }
 
+  // runs on initial page load
   addCollapsibleListeners();
+
+  // runs on view transitions navigation
+  document.addEventListener('astro:after-swap', addCollapsibleListeners);
 </script>

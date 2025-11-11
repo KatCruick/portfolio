@@ -89,5 +89,9 @@ const children = getSlotChildren(html);
     });
   }
 
+  // runs on initial page load
   initEmbla();
+
+  // runs on view transitions navigation
+  document.addEventListener('astro:after-swap', initEmbla);
 </script>
