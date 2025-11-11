@@ -4,26 +4,40 @@ import Picture from 'astro/components/Picture.astro';
 
 import TextBox from './TextBox.astro';
 
-import fallbackImage from '../../assets/images/e-community-logo.png';
-
-type Props = {
-  image: ImageMetadata;
+const SHAPE_STYLE = {
+  circle: 'rounded-full aspect-square',
+  square: '',
 };
 
-const { image = fallbackImage } = Astro.props;
+type Props = {
+  image?: ImageMetadata;
+  shape?: keyof typeof SHAPE_STYLE;
+};
+
+const { image, shape = 'square' } = Astro.props;
+
+const borderRadiusClass = SHAPE_STYLE[shape];
 ---
 
-<div class="flex w-full gap-x-5">
-  <div class="flex w-full basis-1/4 items-center justify-center bg-amber-100">
-    <Picture
-      src={image}
-      formats={['avif', 'webp']}
-      alt="A description of my image."
-    />
+<div class="flex w-full items-stretch gap-x-5">
+  <div
+    class={`flex basis-1/4 items-center justify-center border-1 border-black ${borderRadiusClass}`}
+  >
+    {
+      !!image && (
+        <Picture
+          src={image}
+          formats={['avif', 'webp']}
+          alt="A description of my image."
+        />
+      )
+    }
   </div>
-  <div class="basis-3/4">
-    <TextBox>
-      <slot />
-    </TextBox>
+  <div class="flex basis-3/4 items-center">
+    <div>
+      <TextBox>
+        <slot />
+      </TextBox>
+    </div>
   </div>
 </div>

@@ -6,16 +6,17 @@ tags:
   - A/B testing
   - Design thinking
 image: /images/projects/coach.png
+hidden: false
 ---
 
 import ProjectProblemImage from '../../assets/01-coach/project-problem.png';
 
-import SectionTextRight from '../../components/project/SectionTextRight.astro';
-import SectionTextLeft from '../../components/project/SectionTextLeft.astro';
-import SectionTextFullWidth from '../../components/project/SectionTextFullWidth.astro';
-import SectionTextBoxes from '../../components/project/SectionTextBoxes.astro';
 import SectionCollapsible from '../../components/project/SectionCollapsible.astro';
 import SectionDownloadButton from '../../components/project/SectionDownloadButton.astro';
+import SectionTextBoxes from '../../components/project/SectionTextBoxes.astro';
+import SectionTextFullWidth from '../../components/project/SectionTextFullWidth.astro';
+import SectionTextLeft from '../../components/project/SectionTextLeft.astro';
+import SectionTextRight from '../../components/project/SectionTextRight.astro';
 
 ![Image](../../assets/01-coach/hero.png)
 
@@ -140,10 +141,53 @@ Ethical issues, including professional conduct, privacy and security, relevant l
 
 <SectionCollapsible>
 
-Research has shown that most behavioural change applications include multiple persuasive strategies and that there is a limited understanding of what strategies are most effective in what contexts. Accordingly, behavioural change techniques included in the Coach prototype were tested for usability, user experience, and perception of efficacy to determine which ones were worth bringing forward into the second iteration of the application. Additionally, the A/B test component of the usability test compared three persuasive strategies for encouraging scheduling of physical activity. The goal was to identify the strategy that users perceived as most effective in encouraging scheduling, with the understanding that scheduling contributes to higher follow-through.
+#### Ethical Concerns
 
-The Test stage with usability testing was included instead of a valence test or five-act interview which are classically employed in the Test stage of the Stanford Design Thinking Process as it was critical to go beyond users rate of satisfaction or dissatisfaction with particular features across the application, and instead focus on the usability and perceived efficacy of persuasive features. The justification for this decision, is that just because a user rates being satisfied with a feature, does not mean that they think the feature would contribute to increase scheduling or uptake of physical activity.
+The project presented no ethical concerns. In all instances, the researcher was transparent to ensure that participants were adequately informed about the research. Additionally, prior to surveys, user interviews, low-fidelity evaluations, and high-fidelity evaluations, participants were provided with a Participant Information Sheet, outlining details such as the right to withdraw, potential risks, the purpose of the study, as well as any conceivable ethical issues, irrespective of severity or likelihood. Participants were also asked to sign a Participant Informed Consent Form to confirm that they understood the project, the voluntary nature of their participation, and the potential risks and benefits. Furthermore, all data that was collected was held securely and confidentially, in an anonymised state.
+Professional Concerns
+
+The Code of Professional Conduct of the User Experience Professional Association (UXPA) was adhered to throughout the project. This included being honest with all participants, ensuring that no one was deliberately misinformed or mislead.20 The researcher conducted the project and created the associated material for distribution with consideration for professionalism and discrimination. Additionally, all intellectual property was credited in instances where it was referenced. Further, there were no known conflicts of interest.
+
+#### Legal Concerns
+
+As a high-fidelity prototype, the Coach application presents no legal concerns. In the event that the Coach application was fully developed and deployed to market in the United Kingdom, it would be considered as an eHealth intervention, likely requiring it to follow health application legislation outlined by the Government. As the application is focused on promoting exercise and improving physical health, there would be potential overlap with community healthcare services, and as such, registration with the Care Quality Commission (CQC) could be required. Furthermore, as the Coach application would provide research-backed material on the benefits of exercise and recommended physical activity, it would need to meet the NHS Clinical Risk Management Standards requirements. Furthermore, NHS Information Governance requirements and the Data Protection Act would need to be abided by when storing confidential health information.21 Accordingly, if the Coach application was developed and deployed in other countries, relevant health authority legislation would need to be followed, such as the Health Insurance Portability and Accountability Act (HIPAA) in the United States of America.22
+
+#### Data Protection Concerns
+
+All data collected during surveys, user interviews, low-fidelity evaluations, and high-fidelity testing through the Participant Screener was confidential, anonymised, and stored in a secure location. Participants were informed that the data would be kept for a maximum of 10 years prior to being digitally erased or destroyed using confidential waste disposal methods. If the Coach application was deployed, it would handle personal information related to a user’s physical health. If released in the United Kingdom, Coach would be required to adhere to the regulations outlined in the Data Protection Act 2018.23 Similarly, if the Coach application was available in other nations, it would be required to follow the relevant data protection legislation, such as the Privacy Act of 1974 in the United States of America or the General Data Protection Regulation (GDPR) in Europe.24, 25
+
+#### Societal Concerns
+
+The project did not present any societal concerns and if developed, the Coach application would not present any societal concerns. All steps were taken to avoid harm to participants, and all were treated without discrimination on the basis of age, race, gender, gender identity, national origin, religion, disability, socioeconomic status, or sexual orientation. Further, no information with potential for use to discriminate such as voting preferences, would be collected by the Coach application Additionally, where health data was collected, it would only be utilised to ensure that suggested physical activities would not exacerbate a user’s health condition and that the physical activity would be possible for the user.
+
+![Image](../../assets/images/flow.png)
 
 </SectionCollapsible>
 
 #### Accessibility
+
+<SectionTextRight shape="circle">
+
+Accessibility guidelines outlined in WCAG were followed to ensure that the Coach application was accessible for users of all abilities to enjoy.16 Some guidelines that were followed included giving links and buttons meaningful names, checking the colour contrast, ensuring that important information was not only specified by colour, using consistent navigation, such as back arrows, and using consistent components like primary and secondary buttons, radio buttons, and dropdown menus. Further care was taken to ensure that headings were informative, multiple web pages had multiple ways that they could be accessed, layout was linear and consistent, and users had sufficient time to read content.
+
+</SectionTextRight>
+
+## Prepare
+
+<SectionTextRight>
+
+The initial stage of the project focused on understanding the state of the field of eHealth applications, behavioural change techniques, and habit formation to inform research methodology and application design. This included conducting secondary research to draft a project proposal, to ensure that the project would adhere to ethical guidelines and module requirements. Additionally, secondary research informed the literature review, and literature on behavioural change and persuasive strategies informed the Test stage experimental design, which was iteratively refined based on user interviews and early evaluation. Secondary research also identified research gaps (e.g. limited behavioural change technique testing in physical activity contexts), application shortcomings (e.g. lack of user-created training plans, fragmented activity logging), and potential competitors. This informed the problem statement, which outlined the focus of the application and was used to guide the design process. The gaps in research also provided the basis for the research question, which the experimental component aimed to address.
+
+</SectionTextRight>
+
+### Competitor Analysis
+
+<SectionTextFullWidth>
+
+Applications with similar premises to Coach were identified through primary and secondary research, and selected based on popularity (i.e. number of downloads in the Apple App Store and mentions in research) and inclusion of persuasive strategies (e.g. self-monitoring through tracking of activities and display of associated metrics). A competitor analysis was conducted to visualise the state of the market state and identify standard practices in physical health applications (e.g. activity dashboards, tracking options, social components). Analysis revealed application strengths (e.g. Garmin Connect's in-depth data visualisation) and weaknesses (e.g. device requirements, lack of scheduling features). Gaps in the market were identified, and taken with secondary research, informed the Coach application scope and features.
+
+Competitor applications typically included the ability to track and record physical activities, the option to add friends, and the opportunity to view progress through data visualisation. As these are expected functionalities, they were included in the Coach application. Additionally, common persuasive features included self-monitoring (e.g. tracking of exercise), rewards (e.g. trophies and acknowledgement of personal best efforts), and social support (e.g. the option to connect with and motivate peers) were noted in each of the applications, and as such were tested and included in the prototype. Finally, analysis identified opportunities for improvement and the expansion of current offerings to better meet user needs. For example, while all applications encouraged activity tracking, the majority did not include options to schedule activity, make training plans, or set personalised goals. Accordingly, competitor analysis directly shaped design decisions by highlighting opportunities for differentiation and user needs not addressed by existing solutions.[hobbit-hole][1]
+
+</SectionTextFullWidth>
+
+[1]: https://en.wikipedia.org/wiki/Hobbit#Lifestyle
