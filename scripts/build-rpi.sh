@@ -37,7 +37,7 @@ if [ "$BEFORE" != "$AFTER" ]; then
     if [ $? -eq 0 ]; then
         echo -e "${GREEN}Build successful! Starting preview server...${NC}"
         # Start preview server in background
-        nohup npm run preview -- -host --config ./vite.config.js > server.log 2>&1 &
+        nohup npm run preview -- --host --config ./vite.config.js > server.log 2>&1 &
         echo -e "${GREEN}Server started! Check server.log for output.${NC}"
     else
         echo -e "${RED}Build failed! Check the output above for errors.${NC}"
