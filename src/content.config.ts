@@ -20,5 +20,18 @@ const projects = defineCollection({
   schema: ProjectSchema,
 });
 
+export const TinaProjectSchema = z.object({
+  title: z.string(),
+  body: z.string(),
+});
+
+const tinaProjects = defineCollection({
+  loader: glob({
+    pattern: '**/*.json',
+    base: './content/projects',
+  }),
+  schema: TinaProjectSchema,
+});
+
 // 4. Export a single `collections` object to register your collection(s)
-export const collections = { projects };
+export const collections = { projects, tinaProjects };

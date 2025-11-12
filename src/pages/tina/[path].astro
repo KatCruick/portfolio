@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+
+import Grid from '../../components/Grid.astro';
+import Layout from '../../layouts/Layout.astro';
+import Text from '../../components/Text.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('tinaProjects');
+
+  console.log(projects);
+
+  return projects.map((project, index) => ({
+    params: { path: project.id },
+    props: { project, projectNumber: index },
+  }));
+}
+
+const { project } = Astro.props;
+
+// const { Content } = await render(project);
+
+const { title, body } = project.data;
+---
+
+<Layout>
+  <Grid>
+    <div>
+      <Text type="h1" transition:name={`project-title-${title}`}>{title}</Text>
+      <div class="prose flex flex-col py-20">
+        {body}
+      </div>
+    </div>
+  </Grid>
+</Layout>
