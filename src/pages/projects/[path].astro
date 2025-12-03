@@ -1,5 +1,6 @@
 ---
 import { render } from 'astro:content';
+import { Picture } from 'astro:assets';
 
 import Grid from '../../components/Grid.astro';
 import Layout from '../../layouts/Layout.astro';
@@ -8,6 +9,7 @@ import Tag from '../../components/Tag.astro';
 import { getVariantByIndex } from '../../services/getVariantByIndex';
 import { TILE_COLOURS } from '../../services/constants';
 import { getProjectCollection } from '../../services/getProjectCollection';
+import ProjectOverview from '../../components/ProjectOverview/ProjectOverview.astro';
 
 export async function getStaticPaths() {
   const projects = await getProjectCollection();
@@ -22,7 +24,7 @@ const { project, projectNumber } = Astro.props;
 
 const { Content } = await render(project);
 
-const { title, description, tags } = project.data;
+const { title, description, tags, overview, image } = project.data;
 ---
 
 <Layout>
@@ -39,6 +41,10 @@ const { title, description, tags } = project.data;
           ))
         }
       </div>
+
+      {image && <Picture src={image} alt={title} class="py-12" />}
+
+      {overview && <ProjectOverview overview={overview} />}
 
       <div class="prose flex flex-col py-20">
         <Content />

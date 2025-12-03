@@ -1,36 +1,3 @@
-type Project = {
-  path: string;
-  title: string;
-  description: string;
-};
-
-export const PROJECTS: Project[] = [
-  {
-    path: 'coach',
-    title: 'Hello Kat ',
-    description:
-      'The design and experimental evaluation of a mobile application for exercise habit formation using behavioural changes techniques',
-  },
-  {
-    path: 'two',
-    title: 'Project Two',
-    description:
-      'The design and experimental evaluation of a mobile application for exercise habit formation using behavioural changes techniques',
-  },
-  {
-    path: 'three',
-    title: 'Project Three',
-    description:
-      'The design and experimental evaluation of a mobile application for exercise habit formation using behavioural changes techniques',
-  },
-  {
-    path: 'four',
-    title: 'Project Four',
-    description:
-      'The design and experimental evaluation of a mobile application for exercise habit formation using behavioural changes techniques',
-  },
-];
-
 export type TimelineElement = {
   title: string;
   description: string;
