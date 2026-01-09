@@ -167,6 +167,11 @@ https://github.com/tailwindlabs/tailwindcss-typography/blob/main/src/styles.js
     @apply mb-0;
   }
 
+  /* Highlight footnote reference when navigated to */
+  a[data-footnote-ref]:target {
+    @apply bg-yellow-200 rounded px-1;
+  }
+
   /* Footnotes / References section */
   section[data-footnotes] {
     @apply mt-20;

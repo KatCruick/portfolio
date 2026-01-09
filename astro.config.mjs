@@ -22,6 +22,7 @@ export default defineConfig({
     remarkRehype: {
       footnoteLabel: 'References',
       footnoteLabelTagName: 'h4',
+      clobberPrefix: 'tag-',
     },
   },
 });
