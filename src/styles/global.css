@@ -166,4 +166,29 @@ https://github.com/tailwindlabs/tailwindcss-typography/blob/main/src/styles.js
   > :last-child {
     @apply mb-0;
   }
+
+  /* Footnotes / References section */
+  section[data-footnotes] {
+    @apply mt-20;
+  }
+
+  section[data-footnotes] h4 {
+    @apply mt-0;
+  }
+
+  section[data-footnotes] ol {
+    @apply type-body list-decimal list-outside pl-8 mt-6;
+  }
+
+  section[data-footnotes] ol li {
+    @apply mt-2;
+  }
+
+  section[data-footnotes] ol li:first-child {
+    @apply mt-0;
+  }
+
+  section[data-footnotes] ol li p {
+    @apply mt-0;
+  }
 }
