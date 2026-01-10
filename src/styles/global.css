@@ -5,6 +5,8 @@
   --font-sans: 'DM Sans Variable', sans-serif;
   --font-serif: 'Editorial Old', serif;
 
+  --spacing-navbar: 140px;
+
   --color-red: #f16141;
   --color-red-50: #fdebe7;
   --color-red-100: #fcd8cf;
@@ -101,6 +103,10 @@
   @apply font-sans text-[18px] leading-[24px] font-normal;
 }
 
+html {
+  scroll-padding-top: calc(var(--spacing-navbar) + 20px);
+}
+
 /*
 Check out Ty
 
@@ -169,7 +175,7 @@ https://github.com/tailwindlabs/tailwindcss-typography/blob/main/src/styles.js
 
   /* Highlight footnote reference when navigated to */
   a[data-footnote-ref]:target {
-    @apply bg-yellow-200 rounded px-1;
+    @apply rounded bg-yellow-200 px-1;
   }
 
   /* Footnotes / References section */
@@ -182,7 +188,7 @@ https://github.com/tailwindlabs/tailwindcss-typography/blob/main/src/styles.js
   }
 
   section[data-footnotes] ol {
-    @apply type-body list-decimal list-outside pl-8 mt-6;
+    @apply type-body mt-6 list-outside list-decimal pl-8;
   }
 
   section[data-footnotes] ol li {
