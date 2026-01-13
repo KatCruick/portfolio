@@ -1,7 +1,5 @@
 # Tasks
 
-- [ ] Fix the fact that you can't currently have more than one collapsible section working per page
-
 - [ ] Get deploy workflow working
 
   We can't use Vercel's deploy hooks to deploy the website, as Vercel will not automatically deploy commits from a git author who is not the owner of the Vercel project. Instead we need to set up a GitHub Action that will trigger a new deploy on Vercel whenever a commit is pushed to the `main` branch.
@@ -16,6 +14,10 @@
 - [ ] Build the tooltip for the project list component
 
 ---
+
+- [x] Work out how to style and auto-populating references. This might require a custom remark plugin.
+
+- [x] Fix the fact that you can't currently have more than one collapsible section working per page
 
 - [x] Create components for each of the content block types
 

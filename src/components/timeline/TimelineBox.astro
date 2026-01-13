@@ -3,26 +3,32 @@ import Text from '../Text.astro';
 
 type Props = {
   title: string;
-  description: string;
+  subtitle: string;
+  bullets: string[];
+  outcome: string;
 };
 
-const { title, description } = Astro.props;
+const { title, subtitle, bullets, outcome } = Astro.props;
 ---
 
 <div class="flex w-full flex-col border-2 px-4 py-6">
-  <Text type="sh1">
-    {title}
-  </Text>
-  <div class="pt-1">
-    <Text type="sh4">
-      {description}
+  <div class="pb-1">
+    <Text type="sh1">
+      {title}
     </Text>
   </div>
-  <ul class="type-body list-disc pt-4 pl-6">
-    <li>Wanted to understand why people behave as they do</li>
-    <li>Developed an interest in conducting secondary and primary research</li>
-    <li>
-      Conducted experiments in social psychology and cognitive neuroscience
-    </li>
+  <div class="pb-1">
+    <Text type="sh4">
+      {subtitle}
+    </Text>
+  </div>
+  <ul class="type-body list-disc pb-4 pl-6">
+    {bullets.map((bullet) => <li>{bullet}</li>)}
   </ul>
+  <Text type="body">
+    <span>
+      <strong>Outcome:</strong>
+      {outcome}
+    </span>
+  </Text>
 </div>

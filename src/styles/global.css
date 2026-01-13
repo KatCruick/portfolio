@@ -173,11 +173,6 @@ https://github.com/tailwindlabs/tailwindcss-typography/blob/main/src/styles.js
     @apply mb-0;
   }
 
-  /* Highlight footnote reference when navigated to */
-  a[data-footnote-ref]:target {
-    @apply rounded bg-yellow-200 px-1;
-  }
-
   /* Footnotes / References section */
   section[data-footnotes] {
     @apply mt-20;
@@ -201,5 +196,15 @@ https://github.com/tailwindlabs/tailwindcss-typography/blob/main/src/styles.js
 
   section[data-footnotes] ol li p {
     @apply mt-0;
+  }
+
+  /* Highlight footnote backref when navigated to */
+  section[data-footnotes] ol li:target {
+    @apply rounded bg-yellow-200;
+  }
+
+  /* Highlight footnote reference when navigated to */
+  a[data-footnote-ref]:target {
+    @apply rounded bg-yellow-200 px-1;
   }
 }

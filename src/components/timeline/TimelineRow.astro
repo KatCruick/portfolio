@@ -3,27 +3,18 @@ import TimelineBox from './TimelineBox.astro';
 import { type TimelineElement } from '../../content/index.ts';
 import clsx from 'clsx';
 import Text from '../Text.astro';
+import { getVariantByIndex } from '../../services/getVariantByIndex';
 
-const COLOURS = {
-  red: 'bg-red',
-  blue: 'bg-blue',
-  green: 'bg-green',
-  yellow: 'bg-yellow',
-} as const;
+const COLOURS = ['bg-red', 'bg-blue', 'bg-green', 'bg-yellow'] as const;
 
 type Props = {
-  direction?: 'left' | 'right';
-  colour?: keyof typeof COLOURS;
+  index?: number;
 } & TimelineElement;
 
-const {
-  direction = 'left',
-  colour = 'red',
-  date,
-  ...timelineBoxProps
-} = Astro.props;
+const { index = 0, date, ...timelineBoxProps } = Astro.props;
 
-const colourClass = COLOURS[colour];
+const direction = index % 2 === 0 ? 'left' : 'right';
+const colourClass = COLOURS[index % COLOURS.length];
 ---
 
 <div class="flex">
