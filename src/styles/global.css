@@ -4,6 +4,7 @@
 @theme {
   --font-sans: 'DM Sans Variable', sans-serif;
   --font-serif: 'Editorial Old', serif;
+  --font-size: 16;
 
   --spacing-navbar: 140px;
 
@@ -100,11 +101,14 @@
 }
 
 @utility type-body {
-  @apply font-sans text-[18px] leading-[24px] font-normal;
+  @apply font-sans font-normal;
+  font-size: calc((18 / var(--font-size)) * 1rem);
+  line-height: calc((24 / var(--font-size)) * 1rem);
 }
 
 html {
   scroll-padding-top: calc(var(--spacing-navbar) + 20px);
+  font-size: calc(var(--font-size) * 1px);
 }
 
 /*
