@@ -6,13 +6,16 @@ import ProjectList from '../components/ProjectList.astro';
 ---
 
 <Layout>
-  <Grid>
-    <div class="flex h-screen w-full justify-center pt-[5%]">
-      <div class="flex w-full flex-col items-center">
-        <Text type="h1"> Projects. </Text>
+  <div class="pb-20">
+    <Grid>
+      <div class="flex h-screen w-full justify-center pt-[5%]">
+        <div class="flex w-full flex-col items-center">
+          <Text type="h1"> Projects. </Text>
+        </div>
       </div>
-    </div>
 
-    <ProjectList />
-  </Grid>
+      <ProjectList />
+      <Grid />
+    </Grid>
+  </div>
 </Layout>

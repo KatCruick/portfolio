@@ -1,6 +1,10 @@
 ---
+import { Picture } from 'astro:assets';
+
 import Tag, { type TagColour } from './Tag.astro';
 import Text from './Text.astro';
+
+import fallbackImage from '../assets/images/flow.png';
 
 export type Props = {
   title: string;
@@ -9,69 +13,87 @@ export type Props = {
   tagColour: TagColour;
   projectNumber: number;
   href: string;
+  image?: ImageMetadata;
 };
 
-const { title, tagColour, description, projectNumber, href, tags } =
+const { title, tagColour, description, projectNumber, href, tags, image } =
   Astro.props;
+
+const hoverImage = image ?? fallbackImage;
 ---
 
-<a
-  data-project-tile
-  class="flex w-full gap-x-[68px] border-2 px-[68px] py-4"
-  href={href}
->
-  <div class="flex items-center">
-    <Text type="h2">
-      <span class="align-middle"> {projectNumber}. </span>
-    </Text>
-  </div>
-
-  <div class="flex flex-col">
-    <Text type="sh1" transition:name={`project-title-${title}`}>{title}</Text>
-
-    <div class="flex gap-x-8 pt-2">
-      {tags?.map((tag) => <Tag colour={tagColour}>{tag}</Tag>)}
-    </div>
-    <div class="pt-6">
-      <Text type="body">
-        {description}
+<div class="relative" data-project-tile-wrapper>
+  <a
+    data-project-tile
+    class="flex w-full gap-x-[68px] border-2 px-[68px] py-4"
+    href={href}
+  >
+    <div class="flex items-center">
+      <Text type="h2">
+        <span class="align-middle"> {projectNumber}. </span>
       </Text>
     </div>
+
+    <div class="flex flex-col">
+      <Text type="sh1" transition:name={`project-title-${title}`}>{title}</Text>
+
+      <div class="flex gap-x-8 pt-2">
+        {tags?.map((tag) => <Tag colour={tagColour}>{tag}</Tag>)}
+      </div>
+      <div class="pt-6">
+        <Text type="body">
+          {description}
+        </Text>
+      </div>
+    </div>
+  </a>
+
+  <div
+    data-hover-image
+    class="pointer-events-none absolute top-0 right-0 z-40 hidden h-[440px] w-[640px] translate-x-1/4 border-2 bg-white p-20 opacity-0 transition-opacity duration-300 ease-in-out"
+  >
+    <Picture
+      src={hoverImage}
+      formats={['avif', 'webp']}
+      alt={`Preview of ${title} project`}
+    />
   </div>
-</a>
+</div>
 
 <script>
-  const buttons = document.querySelectorAll('[data-project-tile]');
+  function setupHoverTooltips() {
+    const wrappers = document.querySelectorAll('[data-project-tile-wrapper]');
 
-  const tooltips = document.querySelectorAll('[data-hover-image]');
+    wrappers.forEach((wrapper) => {
+      const tile = wrapper.querySelector('[data-project-tile]');
+      const tooltip = wrapper.querySelector<HTMLElement>('[data-hover-image]');
 
-  const tooltip = tooltips[0];
+      if (!tile || !tooltip) return;
 
-  // Add event listeners to fire confetti when a button is clicked.
-  buttons.forEach((button) => {
-    button.addEventListener('mouseenter', () => {
-      console.log('hovered');
+      tile.addEventListener('mouseenter', () => {
+        tooltip.classList.remove('hidden');
+        requestAnimationFrame(() => {
+          tooltip.classList.add('opacity-100');
+          tooltip.classList.remove('opacity-0');
+        });
+      });
 
-      if (!tooltip) {
-        console.log('No tooltip found');
-        return;
-      }
-
-      const rect = button.getBoundingClientRect();
-
-      const scrollX = rect.left + window.scrollX;
-      const scrollY = rect.top + window.scrollY;
-
-      console.log('scrollX:', scrollX, 'scrollY:', scrollY);
-
-      tooltip.setAttribute(
-        'style',
-        `top: ${scrollY}px; right: ${scrollX}px; visibility: visible;`,
-      );
+      tile.addEventListener('mouseleave', () => {
+        tooltip.classList.add('opacity-0');
+        tooltip.classList.remove('opacity-100');
+        tooltip.addEventListener(
+          'transitionend',
+          () => {
+            if (tooltip.classList.contains('opacity-0')) {
+              tooltip.classList.add('hidden');
+            }
+          },
+          { once: true },
+        );
+      });
     });
+  }
 
-    button.addEventListener('mouseleave', () => {
-      tooltip.setAttribute('style', `visibility: hidden;`);
-    });
-  });
+  setupHoverTooltips();
+  document.addEventListener('astro:page-load', setupHoverTooltips);
 </script>

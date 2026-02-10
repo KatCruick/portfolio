@@ -8,11 +8,11 @@ import Linkedin from '../assets/icons/linkedin.svg';
 import Mail from '../assets/icons/mail.svg';
 import Person from '../assets/icons/person.svg';
 
-import Hover from '../components/Hover.astro';
 import Text from '../components/Text.astro';
 import Picture from 'astro/components/Picture.astro';
 
 import heroImage from '../assets/images/kat.jpg';
+import Arrow from '../assets/images/difficult-arrow.svg';
 import ProjectList from '../components/ProjectList.astro';
 ---
 
@@ -38,17 +38,26 @@ import ProjectList from '../components/ProjectList.astro';
     </div>
 
     <div class="hidden lg:block">
-      <div class="w-[630px] pb-[104px]">
-        <div>
+      <div class="relative w-full pb-10">
+        <div class="pb-28">
           <span class="flex items-baseline">
             <Text type="sh3"> I am a&nbsp; </Text>
             <Text type="sh1"> UX designer and researcher </Text>
           </span>
+
+          <Text type="sh3"> creating in London, United Kingdom. </Text>
         </div>
-        <Text type="sh3"> creating in London, United Kingdom. </Text>
+
+        <div class="mx-auto w-fit">
+          <Text type="h2"> Projects</Text>
+        </div>
+
+        <div class="absolute top-[2.5em] right-0"><Arrow /></div>
       </div>
 
-      <div class="relative pb-10">
+      <ProjectList />
+
+      <div class="relative py-10">
         <Picture
           src={heroImage}
           formats={['avif', 'webp']}
@@ -57,14 +66,6 @@ import ProjectList from '../components/ProjectList.astro';
           fit="cover"
         />
       </div>
-
-      <div class="flex w-full justify-center">
-        <Text type="h2">Projects</Text>
-      </div>
-
-      <Hover />
-
-      <ProjectList />
 
       <div class="flex justify-center pt-20">
         <Text type="h2">Want to say hi?</Text>
