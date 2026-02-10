@@ -10,6 +10,7 @@ import { getVariantByIndex } from '../../services/getVariantByIndex';
 import { TILE_COLOURS } from '../../services/constants';
 import { getProjectCollection } from '../../services/getProjectCollection';
 import ProjectOverview from '../../components/ProjectOverview/ProjectOverview.astro';
+import DownloadButton from '../../components/DownloadButton.astro';
 
 export async function getStaticPaths() {
   const projects = await getProjectCollection();
