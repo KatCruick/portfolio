@@ -47,7 +47,7 @@ const { title, description, tags, overview, image } = project.data;
 
       {overview && <ProjectOverview overview={overview} />}
 
-      <div class="prose flex flex-col py-20">
+      <div class="prose mx-auto flex max-w-[75ch] flex-col py-20">
         <Content />
       </div>
     </div>

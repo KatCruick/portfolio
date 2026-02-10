@@ -28,3 +28,9 @@ pnpm-debug.log*
 
 # Vercel configuration
 .vercel
+
+# AI tooling
+.opencode
+.claude
+.tmp
+.playwright-mcp

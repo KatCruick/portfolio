@@ -103,7 +103,8 @@
 @utility type-body {
   @apply font-sans font-normal;
   font-size: calc((18 / var(--font-size)) * 1rem);
-  line-height: calc((24 / var(--font-size)) * 1rem);
+  /* line-height: calc((24 / var(--font-size)) * 1rem); */
+  line-height: calc((32 / var(--font-size)) * 1rem);
 }
 
 html {
@@ -177,6 +178,56 @@ https://github.com/tailwindlabs/tailwindcss-typography/blob/main/src/styles.js
     @apply mb-0;
   }
 
+  /* Ordered lists */
+  ol {
+    @apply type-body mt-10 list-outside list-decimal pl-8;
+  }
+
+  ol li {
+    @apply mt-2 pl-2;
+  }
+
+  ol li:first-child {
+    @apply mt-0;
+  }
+
+  /* Unordered lists */
+  ul {
+    @apply type-body mt-10 list-outside list-disc pl-8;
+  }
+
+  ul li {
+    @apply mt-2 pl-2;
+  }
+
+  ul li:first-child {
+    @apply mt-0;
+  }
+
+  /* Nested lists */
+  li > ul,
+  li > ol {
+    @apply mt-2;
+  }
+
+  li > ul {
+    @apply list-[circle];
+  }
+
+  /* Lists following headings */
+  h2 + ol,
+  h2 + ul,
+  h3 + ol,
+  h3 + ul,
+  h4 + ol,
+  h4 + ul {
+    @apply mt-0;
+  }
+
+  /* Paragraphs inside list items */
+  li > p {
+    @apply mt-0;
+  }
   /* Footnotes / References section */
   section[data-footnotes] {
     @apply mt-20;

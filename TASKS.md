@@ -1,5 +1,9 @@
 # Tasks
 
+- [ ] Get resizing working on the arrow on the homepage
+
+- [ ] Build the tooltip for the project list component
+
 - [ ] Get deploy workflow working
 
   We can't use Vercel's deploy hooks to deploy the website, as Vercel will not automatically deploy commits from a git author who is not the owner of the Vercel project. Instead we need to set up a GitHub Action that will trigger a new deploy on Vercel whenever a commit is pushed to the `main` branch.
@@ -10,8 +14,6 @@
 
   - [Blog post outlining workarounds for deploy hooks](https://blog.saif71.com/fix-vercel-git-error/)
   - [Vercel docs on deploying with GitHub Actions](https://vercel.com/guides/how-can-i-use-github-actions-with-vercel)
-
-- [ ] Build the tooltip for the project list component
 
 ---
 
