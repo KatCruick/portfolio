@@ -1,0 +1,37 @@
+---
+interface Props {
+  /** Where the bottom arrow line starts, as a percentage from the left (default: '35%') */
+  arrowStart?: string;
+}
+
+const { arrowStart = '35%' } = Astro.props;
+---
+
+<div class="pointer-events-none absolute inset-0">
+  <!-- Top horizontal line -->
+  <div class="absolute top-0 right-0 left-0 h-[2px] bg-black"></div>
+  <!-- Right vertical line -->
+  <div class="absolute top-0 right-0 bottom-0 w-[2px] bg-black"></div>
+  <!-- Bottom line with arrowhead -->
+  <div
+    class="absolute right-0 bottom-0 flex items-center"
+    style={`left: ${arrowStart}`}
+  >
+    <svg
+      class="-mr-px shrink-0"
+      width="9"
+      height="14"
+      viewBox="0 0 9 14"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 1L1.5 7L8 13"
+        stroke="black"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"></path>
+    </svg>
+    <div class="h-[2px] flex-1 bg-black"></div>
+  </div>
+</div>
