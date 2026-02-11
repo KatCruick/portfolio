@@ -5,6 +5,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 import { defineConfig } from 'astro/config';
 
+import { rehypeFootnoteCommas } from './src/services/rehypeFootnoteCommas.js';
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
@@ -19,6 +21,7 @@ export default defineConfig({
   integrations: [mdx()],
 
   markdown: {
+    rehypePlugins: [rehypeFootnoteCommas],
     remarkRehype: {
       footnoteLabel: 'References',
       footnoteLabelTagName: 'h4',
