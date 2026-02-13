@@ -1,0 +1,23 @@
+---
+import DownloadButton from './DownloadButton.astro';
+
+type Props = {
+  href?: string;
+};
+
+const { href, ...attrs } = Astro.props;
+
+const isPdf = href?.endsWith('.pdf');
+---
+
+{
+  isPdf ? (
+    <DownloadButton href={href!} external>
+      <slot />
+    </DownloadButton>
+  ) : (
+    <a href={href} {...attrs}>
+      <slot />
+    </a>
+  )
+}

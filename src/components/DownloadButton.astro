@@ -5,15 +5,20 @@ import Text from './Text.astro';
 
 type Props = {
   href: string;
-  fileName: string;
+  fileName?: string;
+  external?: boolean;
 };
 
 const FALLBACK_HREF = 'https://arxiv.org/pdf/2506.02153';
 
-const { href = FALLBACK_HREF, fileName } = Astro.props;
+const { href = FALLBACK_HREF, fileName, external } = Astro.props;
+
+const anchorProps = external
+  ? { target: '_blank', rel: 'noopener noreferrer' }
+  : { download: fileName };
 ---
 
-<a href={href} download={fileName}>
+<a href={href} {...anchorProps}>
   <div class="bg-black">
     <div
       class="flex -translate-1.5 cursor-pointer items-center justify-center border-2 border-black bg-white py-3 duration-75 ease-in-out active:translate-0"

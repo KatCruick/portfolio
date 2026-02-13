@@ -1,8 +1,12 @@
 # Tasks
 
-- [ ] Get resizing working on the arrow on the homepage
+- [ ] Download button
 
-- [ ] Build the tooltip for the project list component
+- [ ] Icons in project summary section
+
+- [ ] Demo a mobile-view
+
+- [ ] Get the mobile navbar working
 
 - [ ] Get deploy workflow working
 
@@ -16,6 +20,10 @@
   - [Vercel docs on deploying with GitHub Actions](https://vercel.com/guides/how-can-i-use-github-actions-with-vercel)
 
 ---
+
+- [x] Get resizing working on the arrow on the homepage
+
+- [x] Build the tooltip for the project list component
 
 - [x] Work out how to style and auto-populating references. This might require a custom remark plugin.
 
