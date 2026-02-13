@@ -3,7 +3,6 @@ import TimelineBox from './TimelineBox.astro';
 import { type TimelineElement } from '../../content/index.ts';
 import clsx from 'clsx';
 import Text from '../Text.astro';
-import { getVariantByIndex } from '../../services/getVariantByIndex';
 
 const COLOURS = ['bg-red', 'bg-blue', 'bg-green', 'bg-yellow'] as const;
 
@@ -14,33 +13,25 @@ type Props = {
 const { index = 0, date, ...timelineBoxProps } = Astro.props;
 
 const direction = index % 2 === 0 ? 'left' : 'right';
+
+const flexDirection =
+  direction === 'left' ? 'lg:flex-row' : 'lg:flex-row-reverse';
+const yearAlignment =
+  direction === 'left' ? 'lg:justify-start' : 'lg:justify-end';
+
 const colourClass = COLOURS[index % COLOURS.length];
 ---
 
-<div class="flex">
-  <div class="flex w-full basis-1/2 items-center justify-end">
-    {
-      direction === 'left' ? (
-        <TimelineBox {...timelineBoxProps} />
-      ) : (
-        <Text type="h3">
-          <span class="px-2 align-middle">{date}</span>
-        </Text>
-      )
-    }
+<div class={clsx('flex', flexDirection)}>
+  <div class="flex w-full items-center justify-end lg:basis-1/2">
+    <TimelineBox {...timelineBoxProps} />
   </div>
   <div class="flex items-center px-2">
-    <div class={clsx(colourClass, 'h-10 w-10 rounded-full')}></div>
+    <div class={clsx('h-10 w-10 rounded-full', colourClass)}></div>
   </div>
-  <div class="flex w-full basis-1/2 items-center">
-    {
-      direction === 'left' ? (
-        <Text type="h3">
-          <span class="px-2 align-middle">{date}</span>
-        </Text>
-      ) : (
-        <TimelineBox {...timelineBoxProps} />
-      )
-    }
+  <div class={clsx('flex items-center lg:w-full lg:basis-1/2', yearAlignment)}>
+    <Text type="h3">
+      <span class="px-2">{date}</span>
+    </Text>
   </div>
 </div>
