@@ -1,9 +1,5 @@
 # Tasks
 
-- [ ] Download button
-
-- [ ] Icons in project summary section
-
 - [ ] Demo a mobile-view
 
 - [ ] Get the mobile navbar working
@@ -69,3 +65,7 @@
   - Define a standalone <Typography /> component, where you pass in a key and it renders the correct typographic elements with the correct utility applied
 
 - [x] Build a carousel component
+
+- [x] Download button
+
+- [x] Icons in project summary section
