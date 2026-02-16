@@ -45,10 +45,12 @@ const { title, description, tags, overview, image } = project.data;
 
       {image && <Picture src={image} alt={title} class="py-12" />}
 
-      {overview && <ProjectOverview overview={overview} />}
+      <div class="mx-auto flex max-w-[75ch] flex-col">
+        {overview && <ProjectOverview overview={overview} />}
 
-      <div class="prose mx-auto flex max-w-[75ch] flex-col py-20">
-        <Content components={{ a: PdfLink }} />
+        <div class="prose py-20">
+          <Content components={{ a: PdfLink }} />
+        </div>
       </div>
     </div>
   </Grid>
