@@ -151,9 +151,8 @@ https://github.com/tailwindlabs/tailwindcss-typography/blob/main/src/styles.js
     @apply mt-10;
   }
 
-  /* Selector for images from Markdown/Content collections */
-  p:has(img) {
-    @apply flex justify-center;
+  img {
+    @apply mx-auto max-w-[80%] object-contain;
   }
 
   h2 + * {
