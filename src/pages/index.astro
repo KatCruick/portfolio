@@ -9,9 +9,7 @@ import Mail from '../assets/icons/mail.svg';
 import Person from '../assets/icons/person.svg';
 
 import Text from '../components/Text.astro';
-import Picture from 'astro/components/Picture.astro';
 
-import heroImage from '../assets/images/kat.jpg';
 import BracketArrow from '../components/BracketArrow.astro';
 import ProjectList from '../components/ProjectList.astro';
 ---
@@ -58,16 +56,6 @@ import ProjectList from '../components/ProjectList.astro';
       </div>
 
       <ProjectList />
-
-      <div class="relative py-10">
-        <Picture
-          src={heroImage}
-          formats={['avif', 'webp']}
-          alt="A description of my image."
-          layout="full-width"
-          fit="cover"
-        />
-      </div>
 
       <div class="flex justify-center pt-20">
         <Text type="h2">Want to say hi?</Text>
